@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- meta는 가장 상단이 맞음-->
+    <title>Document</title>
+    <!-- 내부스타일시트로 활용할 것을 권장 -->
+    <style>
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+    / root 최상단 경로 - 아파치로 설정해놓은 경로의 마지막이 최상단이 됨
+    ./ 현재위치
+    ../ 현재 기준 상단(=부모) 
+    alt : alternative(대안) : 이미지가 지원되지 않을 때 글자로 대체
+    -->
+    <!-- 상대경로 : 현재 위치를 기준으로 한 위치-->
+    <img src="../../images/imgs/avatar.gif" alt="먹쟁이 경수gif">
+    <!-- width="100px" height="120px"> -->
+    <img src="/images/imgs/avatar.gif" alt="먹쟁이 경수gif">
+    <!-- 절대경로 : 보안상 내 컴퓨터의 정보를 로컬로 표시할 수 없다 Not allowed to load local resource -->
+    <img src="D:\A_TeachingMaterial\00_WebProgramming\vscodeWeb\ks\images\imgs\avatar.gif" alt = "절대경로이미지">
+    <!-- localhost 이휴의 경로로 접근하면 이미지 표현 가능 -->
+</body>
+</html>
