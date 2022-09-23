@@ -1,0 +1,44 @@
+<!-- 주석 ctrl shift c, 특정영역 주석 ctrl shift /  -->
+<!-- html 태그 정의 전 가장 먼저 선언해야 하며 html버전을 웹브라우저에 알리는 역할-->
+<!DOCTYPE html>
+<!-- html 문서 시작 태그 -->
+<html lang="ko"> <!-- 웹 접근성과 관련된 속성. 스크린 리더기가 번역할 언어 지정 / en -> kr-->
+
+<head>
+    <!-- meta : 브라우저와 검색 엔진 로봇에게 메타 정보를 제공하는 태그 -->
+    <!-- charset : 문서의 언어 인코딩 지정. 이 부분이 없으면 한글이 깨져 보임 -->
+    <meta charset="UTF-8">
+    <title>문서의 제목을 표현합니다</title>
+    <!-- 내부 스타일 시트 - internal style sheet, head 태그 영역에만 작성 -->
+    <style>
+        h2 {
+            background-color: aqua !important;
+            color: blueviolet;
+        }
+    </style>
+    <script>
+        alert("여기는 헤더영역");
+    </script>
+</head>
+<body>
+    한글이 깨지나요?
+    <h1>한글이 깨지나요?</h1> <!-- h1~h6 있음 -->
+     <!-- 인라인 형태의 스타일 - inline-style sheet(외부도 있음)-->
+     <!-- 스타일 중복 시 제일 마지막으로 쓴 것 (내부<인라인)이 적용됨(우선순위) -->
+     <!-- !important를 넣으면 그것을 쓰겠다 -->
+    <h2 style="background-color:firebrick;color:burlywood">한글이 깨지나요?</h2>
+    <h3>한글이 깨지나요?</h3>
+    <h4>한글이 깨지나요?</h4>
+    <h5>한글이 깨지나요?</h5>
+    <h6>한글이 깨지나요?</h6>
+    <!-- 정의되지 않은 태그는 브라우저 마음대로 해석 -->
+    <h7>한글이 깨지나요?</h7>
+
+    <!-- 페이지 이동 태그. html이 만들어진 이유가 되는 태그 -->
+    <a href="http://www.naver.com">네이버로 이동</a>
+</body>
+<!-- script는 문서 어디든 몇 번이든지 사용 가능함 -->
+<script>
+    alert("나는 경고창이죠");
+</script>
+</html>
