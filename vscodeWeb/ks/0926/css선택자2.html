@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* 닫힌 꺽쇠('>')를 이용해 자식요소만 선택하였음 */
+        /* #prt>.chd {
+            border: 2px dotted green;
+        } */
+        /* 공백(' ')을 통해 후손 요소를 선택하며, 후손에는 자식도 포함 */
+        /* #prt .chd {
+            border: 1px solid pink;
+        } */
+        /* 형제요소들 찾기 - 나를 기준하여 다음 형제 찾기('+'), 모든 형제 찾기('~') */
+        #second~* {
+            border: 1px solid orange
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 들여쓰기를 통해 상하계층구조(부모와 자식의 관계)를 한눈에 볼 수 있다. -->
+    <div id="prt">
+        <div class="chd">자식1</div>
+        <div class="chd" id="second">자식2
+            <div class="chd">후손1</div>
+            <div class="chd">후손2</div>
+            <div class="chd">후손3</div>
+        </div>
+        <div class="chd">자식3</div>
+        <p>자식3.5</p>
+        <div class="chd">자식4</div>
+    </div>
+</body>
+
+</html>

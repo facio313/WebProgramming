@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /* id 선택자 우선순위가 더 높음 */
+        #tkv {
+            font-size: 40px;
+            color: yellow;
+        }
+        /* id 선택자의 우선순위가 요소 선택자보다 높기 때문에 먼저 작성됐더라도 적용이 됨*/
+        /* 요소(태그) 선택자 */
+        div {
+            color: rgb(156, 2, 233);
+            background-color: olive;
+        }
+        #o0 { /*50은 적용되지 않음. 속성 시작은 영문의 소문자로만! */
+            font-size: 20px;
+            color: orange;
+        }
+        /* class 선택자 */
+        .mgg {/* 클래스는 .로 접근 가능 */
+            color: aqua;
+            background-color: orange;
+        }
+        div.mgg {/* 선택자이면서 mgg클래스만인 것에 적용하라! */
+            color: palegreen;
+            background-color: yellowgreen;
+        }
+        /* 전체 선택자 */
+        * {
+            border: 1px solid plum
+        }
+        /* 선택자 그룹화 */
+        p, .mgg {
+            font-style: italic;
+        }
+        /* 우선순위 확인하기 */
+    </style>
+</head>
+<body>
+    <!-- id는 페이지 내 유일한 값으로 지정하고, class는 중복 가능 -->
+    <div class="mgg">마징가</div>
+    <div id="tkv">태권</div>
+    <div>그랜다이저</div>
+    <p class="mgg">나는 P태그</p> <!--p는 위 아래로 블록을 하나씩 더 갖고 있다 -->
+    <div id="o0">손오공</div>
+    <div class="mgg">완다</div>
+</body>
+</html>

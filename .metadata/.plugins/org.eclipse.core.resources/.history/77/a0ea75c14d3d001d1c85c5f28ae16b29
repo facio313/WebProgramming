@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="" method="">
+	ID<input type="text"> <br>
+	PW<input type="password">
+	</form>
+</body>
+</html>

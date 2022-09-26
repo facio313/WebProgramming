@@ -8,6 +8,6 @@
 <booleanAttribute key="org.eclipse.jdt.launching.DEFAULT_CLASSPATH" value="false"/>
 <stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_341"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="start"/>
-<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dcatalina.base=&quot;C:\Users\PC-08\eclipse-workspace\WebProgramming\.metadata\.plugins\org.eclipse.wst.server.core\tmp0&quot; -Dcatalina.home=&quot;D:\B_Util\5.ApacheTomcat\apache-tomcat-8.5.37&quot; -Dwtp.deploy=&quot;C:\Users\PC-08\eclipse-workspace\WebProgramming\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps&quot; -Djava.endorsed.dirs=&quot;D:\B_Util\5.ApacheTomcat\apache-tomcat-8.5.37\endorsed&quot;"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Dcatalina.base=&quot;D:\A_TeachingMaterial\00_WebProgramming\.metadata\.plugins\org.eclipse.wst.server.core\tmp0&quot; -Dcatalina.home=&quot;D:\B_Util\5.ApacheTomcat\apache-tomcat-8.5.37&quot; -Dwtp.deploy=&quot;D:\A_TeachingMaterial\00_WebProgramming\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps&quot; -Djava.endorsed.dirs=&quot;D:\B_Util\5.ApacheTomcat\apache-tomcat-8.5.37\endorsed&quot;"/>
 <stringAttribute key="server-id" value="Tomcat v8.5 Server at localhost"/>
 </launchConfiguration>
