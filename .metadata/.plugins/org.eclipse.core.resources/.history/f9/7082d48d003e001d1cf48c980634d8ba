@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="test.jsp" method="post">
+	ID<input type="text" name="id"> <br>
+	PW<input type="password" name="pw">
+	<input type="submit">
+	</form>
+</body>
+</html>
+
+<!-- method부분에 get, post -->
+<!-- http://localhost/webPro/0926/test.jsp?id=goodmorning%21%21&pw=wow -->
+<!-- ?뒤로 데이터가 보임!
+특수문자 같은 건 아스키 코드로 보임, ! == %21 -->
+<!-- get방식은 읽어올 때만 쓰고 나머지는 별로 -->

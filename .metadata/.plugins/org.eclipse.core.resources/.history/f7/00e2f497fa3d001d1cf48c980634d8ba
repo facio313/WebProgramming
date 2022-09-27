@@ -1,0 +1,3 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<body>여기는 jsp페이지...</body>

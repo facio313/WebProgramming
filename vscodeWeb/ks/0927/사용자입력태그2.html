@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- radio버튼 사용 시 name값을 공통으로 하여 그룹화시킬 필요가 있다 -->
+    <!-- name을 하나로 통일시켜 주면 그룹으로 묶여서 하나만 선택할 수 있게 만듬 -->
+    여자<input type="radio" name="gender" value="female">
+    남자<input type="radio" name="gender" value="male" checked>
+    외계인<input type="radio" name="gender" value="alien">
+    
+    <hr>
+
+    <input type="checkbox" name="hobby" value="java">자바
+    <input type="checkbox" name="hobby" value="javascript">자바스크립트
+    <input type="checkbox" name="hobby" value="html">HTML
+    <input type="checkbox" name="hobby" value="css">CSS
+
+    <hr>
+
+    <input type="button" value="버튼" onclick="f_checked()">
+    <script>
+        function f_checked(){
+            var radios = document.getElementsByName("gender");
+            // console.log(radios);
+            for(var i=0; i<radios.length; i++){
+                // console.log(radios[i].checked);
+                if(radios[i].checked){
+                    alert("선택한 성별은 " + radios[i].value)
+                }
+            }
+
+            //여기부터 체크박스 값을 콘솔로 표현할 코드를 입력하세요
+            // var hobby = document.getElementsByName("hobby");
+            // for(var i=0; i<hobby.length; i++){
+            //     if(hobby[i].checked){
+            //         console.log(hobby[i].value)
+            //     }
+            // }
+
+            //쌤이 한 것이에요
+            var chkVals = "";
+            var chkboxs = document.querySelectorAll("input[type=checkbox]");
+            // console.log(chkboxs.length);
+            for(var i=0; i<chkboxs.length; i++){
+                if(chkboxs[i].checked){
+                    // console.log(chkboxs[i].value);
+                    chkVals += chkboxs[i].value + " ";
+                }
+            }
+            console.log("내가 선택한 취미 : " + chkVals);
+            
+            // for(var i=0; i<radios.length; i++){
+            //     for(var j=0; j<hobby.length; j++){
+            //         if(radios[i].checked&&hobby[i].checked){
+            //             alert("선택한 성별은 " + radios[i].value + ", " + "선택한 취미는 " + hobby[i].value)
+            //         }
+            //     }
+            // }
+        }
+    </script>
+</body>
+</html>
