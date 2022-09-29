@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #id_disp {
+            width: 200px;
+            height: 100px;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <!-- table>tr*3>td*2 -->
+    <table border="1">
+        <tr>
+            <td>이름 <input value="" tabindex="1" placeholder="이름을 입력학세요"></td>
+            <td>별명 <input value="" tabindex="-1"></td> <!-- -1을 주면 그냥 지나침-->
+        </tr>
+        <tr>
+            <td>나이 <input value="" tabindex="2" autofocus></td> <!--autofocus 내가 지정한 위치부터 순서대로 진행-->
+            <td>주소 <input value="" tabindex="5"></td>
+        </tr>
+        <tr>
+            <td>전화 <input value="" tabindex="3"></td>
+            <td>모바일 <input value="" tabindex="6"></td>
+        </tr>
+        <tr>
+            <td colspan="2">메모
+                <textarea cols="50" rows="5"></textarea>
+            </td>
+        </tr>
+    </table>
+    <!-- tab적용대상이 아닌 공간에 focus를 주고 싶을 때 tabindex사용 -->
+    <!-- textbox처럼 내용을 입력할 수 있도록 하는 contenteditable -->
+    <div id="id_disp" tabindex="0" contenteditable onkeydown="f_keydown()"></div>
+<script> 
+    function f_keydown() {
+        alert(event.keyCode + " | " + event.key);
+    }
+</script>
+</body>
+</html>

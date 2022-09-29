@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+    #wrapper {
+        height: 500px; /* 먼저 어느 정도인지 지정해주고 */
+        position: relative; /* 투명 설정 시 부모 요소의 상태를 변경하고 기준으로 사용 */
+    }
+    #content {
+        height: 100%; /* 높이 속성에서 % 단위를 사용 시 단독 적용되지 않음 */
+        /* 사용하고 싶으면 부모를 만들어야 함, 만들고 % 사용 시 부모 높이의 %로 가져옴*/
+        border: 3px dotted red;
+        /* background-image: url(../images/imgs/91.png); */
+        /* 축약 - url(경로) position/size repeat attachment */
+        /* background: url(../images/imgs/91.png) center/100% no-repeat; */
+        /* opacity: 0.9 */
+    }
+    #content::before {
+        content: ""; /* 없으면 사진 안 나옴 */
+        background-image: url(../images/imgs/91.png)
+                            , url(../images/imgs/avatar.gif);
+        background-repeat: no-repeat;
+        background-size: 100px 100px, 100px 100px;
+        background-position: left top, right top;
+        opacity: 0.5;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+    }
+</style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="content">
+         피카츄라이츄파이리꼬부기버터풀야도란피죤투또가스
+         피카츄라이츄파이리꼬부기버터풀야도란피죤투또가스
+         피카츄라이츄파이리꼬부기버터풀야도란피죤투또가스
+         피카츄라이츄파이리꼬부기버터풀야도란피죤투또가스
+         피카츄라이츄파이리꼬부기버터풀야도란피죤투또가스
+         피카츄라이츄파이리꼬부기버터풀야도란피죤투또가스
+         피카츄라이츄파이리꼬부기버터풀야도란피죤투또가스
+         피카츄라이츄파이리꼬부기버터풀야도란피죤투또가스
+         피카츄라이츄파이리꼬부기버터풀야도란피죤투또가스
+         피카츄라이츄파이리꼬부기버터풀야도란피죤투또가스
+         피카츄라이츄파이리꼬부기버터풀야도란피죤투또가스
+         피카츄라이츄파이리꼬부기버터풀야도란피죤투또가스
+         피카츄라이츄파이리꼬부기버터풀야도란피죤투또가스
+         피카츄라이츄파이리꼬부기버터풀야도란피죤투또가스
+         피카츄라이츄파이리꼬부기버터풀야도란피죤투또가스
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #id_disp {
+            /* background-color: navy; */
+            /* color: white; */
+        }
+    </style>
+</head>
+<body>
+    <h3>개발자가 알아야 할 css는 많지 않음</h3>
+    <div id="id_disp" style="background-color: navy; color: white; display: block;">
+        <h2>하하하하하</h2>
+    </div>
+    <input type="button" value="눌렁" onclick="f_click();">
+    <script>
+        var v_colors = ["blue", "red", "orange", "green", "purple", "olive"];
+        function f_click() {
+            // 스크립트로 제어할 수 있는 스타일 정보는 태그 안의 inline만 가능
+            // alert("배경색 " + id_disp.style.backgroundColor);
+            // id_disp.style.backgroundColor = "red";
+            //inline으로 아예 쓰지 말란 게 아님. 상황에 맞춰서 쓸 수 있어야 함
+            // alert("display " + id_disp.style.display);
+
+            // if(id_disp.style.display == "none") {
+            //     id_disp.style.display = "block";
+            //     return;
+            // }
+            // id_disp.style.display = "none";
+
+            // 랜덤 색상
+            var ranClr = v_colors[Math.floor(Math.random()*v_colors.length)];
+            console.log(ranClr);
+            id_disp.style.color = ranClr; // 콘텐츠 폰트 색상을 랜덤으로
+            setTimeout(f_click, 1000);
+        }
+    </script>
+</body>
+</html>

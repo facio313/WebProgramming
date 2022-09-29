@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #container {
+            width: 600px;
+            border: 4px solid blue;
+            font-size: 0; /* html문서에 엔터키로 인한 공백 발생 시 해결방안 */
+        }
+        .e_div {
+        width: 200px;    
+        height: 300px;
+        border: 1px solid red; /* 전체 사이즈에 영향을 줌 */
+        box-sizing: border-box; /* 이거 하면 보더가 있더라도 괜츈
+        /* 요소의 사이즈에 border와 padding을 포함시켜 계산*/
+        display: inline-block; /* block -> inline-block으로 변경 */
+        /* 블록요소를 한 줄에 나란히 배치할 때 */
+        }
+    </style>
+</head>
+<body>
+    <div id="container"> <!-- 한 블록을 다 씀 -->
+        <!-- div>div.e_div*4 -->
+        <div class="e_div">A</div> <!-- div 간 enter한 공간이 있음 -> box-sizing하고 폰트 사이즈를 0으로 맞추기 -->
+        <div class="e_div">B</div>
+        <div class="e_div">C</div>
+        <div class="e_div">D</div>
+    </div>
+    
+</body>
+</html>

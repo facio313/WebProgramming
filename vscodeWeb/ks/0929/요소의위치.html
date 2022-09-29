@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #parent {
+            /* absolute의 부모가 되기 위한 자격 >> static한 상태가 아닐 것 */
+            position: relative;
+            left: 100px;
+            top: 100px;
+        }
+        .child {
+            border-style: solid;
+            /* position: static; */ /* default, 방향속성의 적용을 받지 않음 */
+            /* position relative; */ /* 정적위치에서 방향속성의 적용을 받음 */
+            position: absolute; /* 부모의 위치에서 방향속성의 적용을 받음 */
+        }
+        .roze {
+            background-color: pink;
+            left: 10px;
+            top: 0px;
+        }
+        .jeni {
+            background-color: hotpink;
+            left: 30px;
+            /* z-index: 1; */
+            top: 40px;
+        }
+        .lisa {
+            background-color: violet;
+            left: 50px;
+            top: 80px;
+        }
+        .jisu {
+            background-color: plum;
+            left: 70px;
+            top: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div class="child roze">로제</div>
+        <div class="child jeni">제니</div>
+        <div class="child lisa">리사</div>
+        <div class="child jisu">지수</div>
+    </div>
+    <input type="button" value="누름" onclick="f_move();">
+    <script>
+        var v_arr = document.getElementsByClassName("child");
+        console.log("제니? => ", v_arr[1]);
+        function f_move() {
+            // alert("스타일 정보의 유무 확인[ " + v_arr[1].style.left + "]");
+            if(!v_arr[1].style.left) { // inline스타일로 정의되어있지 않을 때 - 처리
+                v_arr[1].style.left= "30px";
+            }
+            v_arr[1].style.left = parseInt(v_arr[1].style.left) + 10 + "px"; // 단위까지 붙여줘야 함!
+        }
+    </script>
+</body>
+</html>

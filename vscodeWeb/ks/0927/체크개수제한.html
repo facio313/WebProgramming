@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div {
+            color: yellow;
+            background-color: black;
+            border: blue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+         당신의 취미를 최대 3개까지만 체그하시오. <br>
+         4개째 선택 시 3개 초과 메시지를 출력하고 체크되지 않도록 하며, <br>
+         다른 항목 해제 시 (=2개) 다른 항목을 선택할 수 있도록...
+
+    </div>
+
+    <input type="checkbox" name="hobby" value="java" onclick="f_hobby(this)">자바
+    <input type="checkbox" name="hobby" value="javascript" onclick="f_hobby(this)">자바스크립트
+    <input type="checkbox" name="hobby" value="html" onclick="f_hobby(this)">HTML
+    <input type="checkbox" name="hobby" value="css" onclick="f_hobby(this)">CSS
+
+<script>
+    var chkCount = 0; // 개수를 담을 변수 초기화
+    function f_hobby(p_this){ // p_this는 각 요소를 받은 매개변수
+        // console.log(p_this.value);
+        // console.log(p_this.value);
+        // alert(p_this.checked); // 선택하면 true, 해제하면 false
+        if (p_this.checked) {
+            // 개수 추가 필요
+            chkCount++
+        } else {
+            chkCount--;
+        }
+        // 개수 제한 및 초과된 체크 상태 해제
+        if (chkCount > 3) {
+            alert("3개까지만 선택가능합니다.")
+            chkCount--;
+            p_this.checked = false; // 체크 상태 강제 해제
+        }
+    }
+</script>
+</body>
+</html>

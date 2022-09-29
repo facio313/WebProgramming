@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 선택상자 또는 콤보박스라고 부른다 -->
+    <!-- 모바일에서는 multiple을 사용해 확장시켜 다중선택하는 경우가 많다 -->
+    <select id="" multiple size ="5" onchange="f_where(this);">
+        <option value="0">사는 곳</option>
+        <option value="Daejeon">대전</option>
+        <option value="Sejong">세종</option>
+        <option value="NewYork" selected>뉴욕</option>
+        <option value="Africa">아프리카</option>
+    </select>
+<script>
+    function f_where(p_this) {
+        // console.log("단일선택 값 : ", p_this.value);
+        // console.log("다중 선택 값 : ", p_this.options[2])
+        var v_opt = p_this.options; // selectbox의 option 배열 값
+        var mySel = []; //빈 배열 공간
+        for(var i = 0; i < v_opt.length; i++) {
+            // console.log(v_opt[i].value + "=>" + v_opt[i].selected);
+            if (v_opt[i].selected) {
+                mySel.push(v_opt[i].value);
+            }
+        }
+        console.log("당신은 " + mySel + "에 사는군요!")
+    }
+</script>
+</body>
+</html>

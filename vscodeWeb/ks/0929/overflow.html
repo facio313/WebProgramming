@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img {
+            width: 200px;
+            height: 200px;
+            /* 공백제거 처리 */
+            display: block;
+            float: left;
+        }
+        #parent {
+            position: relative; /* child의 부모 조건을 적용 */
+            top: ;
+            left: 50px;
+            border: 10px inset olive;
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+        }
+        .child {
+            position: absolute;
+            width: 800px
+        }
+    </style>
+</head>
+<body>
+    <!-- div>(div>img*4)*2 -->
+    <div id="parent">
+        <div id="id_chd1" class="child" style="left:0px;">
+            <img src="../images/imgs/1.jpg" alt="">
+            <img src="../images/imgs/2.jpg" alt="">
+            <img src="../images/imgs/3.jpg" alt="">
+            <img src="../images/imgs/4.jpg" alt="">
+        </div>
+        <div id="id_chd2" class="child" style="left:800px;">
+            <img src="../images/imgs/5.jpg" alt="">
+            <img src="../images/imgs/6.jpg" alt="">
+            <img src="../images/imgs/7.jpg" alt="">
+            <img src="../images/imgs/8.jpg" alt="">
+        </div>
+    </div>
+    <script>
+        /*
+        document.getElementById("id_chd1"); // id 하나만 가져오기에 element가 됨
+        document.getElementsByClassName // 여러 것들을 받아 배열로 만들기에 element에 s가 붙음
+        document.getElementsByName
+        document.getElementsByTagName
+         // 요즘엔 밑에 걸 더 많이 활용함, 위에 거는 옛날
+        document.querySelector("#id")
+        document.querySelector(".class") // 첫 번째 요소만 가져옴
+        document.querySelector("tag") // 첫 번째 요소만 가져옴
+        document.querySelectorAll() // 배열 형태의 데이터를 가져옴
+        */
+
+        var v_chd1 = document.querySelector("#id_chd1")
+        var v_chd2 = document.getElementById("id_chd2");
+        // alert("인라인 스타일 정보 있음? [" + v_chd1.style.left + "]");
+        // inline style로 초기화가 필요하지만 직접 inline style을 의했음
+
+        var v_mvWidth = 1; // 이동할 거리 데이터를 셋팅
+
+        function f_move(){
+            v_chd1.style.left=parseInt(v_chd1.style.left) - v_mvWidth + "px";
+            setTimeout(f_move, 20);
+        }
+        f_move();
+
+    </script>
+</body>
+</html>
