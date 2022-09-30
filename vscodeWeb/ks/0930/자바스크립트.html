@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        자바스크립트
+        자바와는 관련 없음
+        비슷한 점은 c언어로부터 출발한 언어라는 것
+
+        원래 사용자(client) 쪽 데이터 검증(validation)을 위해 만들어졌지만,
+        구글이 AJAX(비동기통신)을 이용해 GMAIL, GOOGLE MAP 등을 성공시킨 이후
+        급속도로 성장하여 자바와 더불어 라이브러리가 가장 많은 언어로 자리잡음
+
+        브라우저를 컨트롤하는 언어는 현재 자바스크림트가 유일하다
+        브라우저마다 스크립트 엔진을 따로 가지고 있기 때문에 호환성 문제가 있다.
+        호환성 여부는 caniuse.com에서 확인하고,
+        공부는 mdn(mozilla develope network)를 활용하면 좋음! 영어공부도 하면 더 좋음
+    </pre>
+
+    <script>
+        // var은 재선언, 재할당이 가능함
+        var v_mascot = "꿈돌이";
+        var v_mascot = 100;
+        var v_mascot = true;
+        var v_mascot = undefined;
+        var v_mascot = null;
+        console.log(typeof v_mascot);
+        
+        // let은 재할당만 가능함
+        let l_mascot = "꿈돌이";
+        l_mascot = 100;
+        // let l c_mascot = true; 안 됨
+        console.log(typeof l_mascot);
+
+        //const
+        const c_mascot = "꿈돌이";
+        // c_mascot = 100; 안 됨
+        console.log(typeof c_mascot);
+
+        //변수 타입은 크게 기본(primitive)형과 참조(reference, /객체)형이 있음
+        //기본형은 number, string, boolean이 있음 / .을 찍을 수 없다.(속성에 접근x)
+        //참조형은 배열(array)과 JSON(object)가 있음 / .을 찍을 수 있다.(속성에 접근ㅇ)
+
+    </script>
+</body>
+</html>

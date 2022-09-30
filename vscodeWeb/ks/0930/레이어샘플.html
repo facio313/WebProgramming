@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img {
+            width: 100px;
+            height: 140px;
+        }
+
+        #wrapper {
+            border: 2px solid red;
+            width: 220px;
+            height: 500px;
+            position: relative;
+        }
+
+        .btn {
+            position: absolute;
+            left: 110px;
+        }
+
+        .panel {
+            position: absolute;
+            top: 30px;
+        }
+    </style>
+    <script> // 스크립트 영역은 아무 데나 놓을 수 있음
+        // 자바스크립트는 인터프리터 언어라 위에서부터 순차적으로!
+        // 그래서 아직 실행되지 않은 코드들은 없는 것으로 침
+        // 위에 써줄 때는 window.onload = funciont() -> 모든 내용들 다 로딩 시키고 이 코드를 실행하라고 명령하는 것
+        var v_panel;
+        var v_text;
+        window.onload = function(){
+            v_panel = document.querySelectorAll(".panel"); // 신 방식
+            // var v_panel2 = document.getElementsByClassName("panel"); // 구 방식
+            // console.log(v_panel1.length + " | " + v_panel2.length);
+            v_text = document.querySelector("#id_text");
+            v_text.value = 1 + "/" + v_panel.length;
+        }
+        
+        var v_layerIndex = 0;
+        function f_next(){
+            //판넬 z-index 초기화 필요...
+            for(var i = 0; i<v_panel.length; i++){
+                v_panel[i].style.zIndex = 1;
+            }
+            v_layerIndex++; //1 = 2번째 레이어(wok)가 보이도록
+
+            //마지막 레이어에 도달했을 때 처음 레이어로 다시 되돌리기..
+            if(v_layerIndex == v_panel.length){
+                v_layerIndex = 0;
+            }
+            v_panel[v_layerIndex].style.zIndex = 999;
+            v_text.value = (v_layerIndex + 1)  + "/" + v_panel.length;
+
+            
+        }
+        function f_prev(){
+            //판넬 z-index 초기화 필요...
+            for(var i = 0; i<v_panel.length; i++){
+            v_panel[i].style.zIndex = 1;
+            }
+            v_layerIndex--;
+
+            //처음 레이어에 도달했을 때 마지막 레이어로 다시 되돌리기..
+            if(v_layerIndex == -1){
+                v_layerIndex = v_panel.length - 1;
+            }
+            v_panel[v_layerIndex].style.zIndex = 999;
+            v_text.value = (v_layerIndex + 1)  + "/" + v_panel.length;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="btn">
+            <input type="button" value="&lt;" onclick="f_prev()">
+            <input id="id_text" value="" size="1">
+            <input type="button" value="&gt;" onclick="f_next()">
+        </div>
+        <div class="panel" style="z-index: 999;">
+            <!-- table>tr*3>td*2 -->
+            <table border="1">
+                <tr>
+                    <td><img src="../images/imgs/1.jpg" alt=""></td>
+                    <td><img src="../images/imgs/2.jpg" alt=""></td>
+                </tr>
+                <tr>
+                    <td><img src="../images/imgs/5.jpg" alt=""></td>
+                    <td><img src="../images/imgs/6.jpg" alt=""></td>
+                </tr>
+                <tr>
+                    <td><img src="../images/imgs/7.jpg" alt=""></td>
+                    <td><img src="../images/imgs/8.jpg" alt=""></td>
+                </tr>
+            </table>
+        </div>
+        <div class="panel" style="z-index: 888;">
+            <table border="1">
+                <tr>
+                    <td><img src="../images/imgs/3.jpg" alt=""></td>
+                    <td><img src="../images/imgs/4.jpg" alt=""></td>
+                </tr>
+                <tr>
+                    <td><img src="../images/imgs/2.jpg" alt=""></td>
+                    <td><img src="../images/imgs/7.jpg" alt=""></td>
+                </tr>
+                <tr>
+                    <td><img src="../images/imgs/1.jpg" alt=""></td>
+                    <td><img src="../images/imgs/6.jpg" alt=""></td>
+                </tr>
+            </table>
+        </div>
+        <div class="panel">
+            <table border="1">
+                <tr>
+                    <td><img src="../images/imgs/5.jpg" alt=""></td>
+                    <td><img src="../images/imgs/8.jpg" alt=""></td>
+                </tr>
+                <tr>
+                    <td><img src="../images/imgs/1.jpg" alt=""></td>
+                    <td><img src="../images/imgs/3.jpg" alt=""></td>
+                </tr>
+                <tr>
+                    <td><img src="../images/imgs/2.jpg" alt=""></td>
+                    <td><img src="../images/imgs/4.jpg" alt=""></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+        #child {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            font-weight: bold;
+        }
+        #container::after{
+            content: "";
+            background-image: url(../images/imgs/1.jpg) no-repeat center center/100vw 100vh;
+            opacity: .3;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"> <!-- 부모영역에 bacground-image -->
+        <div id="child"> <!-- 부모를 기준으로 absolute 처리 --> 
+            이미지 텍스트
+        </div>
+    </div>
+</body>
+</html>

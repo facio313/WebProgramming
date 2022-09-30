@@ -13,7 +13,7 @@
         }
         #parent {
             position: relative; /* child의 부모 조건을 적용 */
-            top: ;
+            top: 50;
             left: 50px;
             border: 10px inset olive;
             width: 200px;
@@ -63,7 +63,14 @@
         var v_mvWidth = 1; // 이동할 거리 데이터를 셋팅
 
         function f_move(){
+            // console.log(parseInt(v_chd1.style.left) - v_mvWidth);
             v_chd1.style.left=parseInt(v_chd1.style.left) - v_mvWidth + "px";
+            v_chd2.style.left=parseInt(v_chd2.style.left) - v_mvWidth + "px";
+
+            // 프레임 반복하기
+            if(parseInt(v_chd1.style.left) == -800) v_chd1.style.left = "800px"; // 재귀호출
+            if(parseInt(v_chd2.style.left) == -800) v_chd2.style.left = "800px"; // 재귀호출
+
             setTimeout(f_move, 20);
         }
         f_move();
