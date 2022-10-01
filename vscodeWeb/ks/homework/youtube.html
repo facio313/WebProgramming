@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        div {
+            border: 1px solid gold;
+        }
+        #wrapper {
+            border: 1px solid black;
+            width: 100%;
+            height: 100vh;
+        }
+        #middle {
+            height: 50%;
+        }
+        #side, #right {
+            float: left;
+            height: 100%;
+        }
+        #side {
+            position: absolute;
+            border: 1px solid red;
+            background-color: red;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100px;
+            height: 100%;
+            z-index: 9999;
+        }
+        #right {
+            position: absolute;
+            border: 1px solid green;
+            width: 90%;
+            height: 100%;
+        }
+        #search {
+            position: absolute;
+            border: 1px solid purple;
+            width: 100%;
+        }
+        #in {
+            border: 1px solid blue;
+            width: 100%;
+            height: 100%
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="side">사이드</div>
+        <div id="head">
+            <div id="search">검색창</div>
+        </div>
+        <div id="contents">안에 내용</div>
+        </div>
+    </div>
+</body>
+</html>
