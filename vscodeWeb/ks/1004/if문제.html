@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div {
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <h3>숫자 2개와 연산자 1개를 입력하고 결과 출력</h3>
+    <!-- <div id="id_disp">1</div>
+    <div>2</div>
+    <div>3</div> -->
+    <input type="button" value="계산" onclick="calc();"><br>
+    결과 값 : <input id="result" type="text">
+    <script>
+        function calc(){
+            // var v_pmpt = prompt("1번째는 필수", "2번째는 옵션");   
+            // alert(v_pmpt + typeof v_pmpt);
+            // null이 object로 나오는데 버그임. null은 객체가 아님. object 객체가 아님.
+            // typeof 너무 많이 썼어서 이제 와서 못 바꿈...그래서 그냥 버그 냅둠
+
+            //prompt 결과 값은 string
+            var a = parseInt(prompt("첫 번째 정수 입력")); //정수로 변환
+            var b = parseInt(prompt("두 번쨰 정수 입력"));
+            var c = prompt("연산자를 입력하세요","+, -, *, / 중 하나");
+            var sum = 0;
+
+            // alert(a + " " + c + " " + b);
+
+            // if
+            /*
+            if(c == '+'){
+                sum = a + b;
+            }else if(c == '-'){
+                sum = a - b;
+            }else if(c == '*'){
+                sum = a * b;
+            }else if(c == '/') {
+                sum = a / b;
+            }else{
+                alert("사칙연산자를 입력하세요");
+                return calc();
+            }
+            */
+
+            // switch
+            switch(c){
+                case '+':
+                    sum = a + b;
+                    break;
+                case '-':
+                    sum = a - b;
+                    break;
+                case '*':
+                    sum = a * b;
+                    break;
+                case '/':
+                    sum = a / b;
+                    break;
+                default :
+                    alert("사칙 연산자를 입력하세요");
+                    return calc();
+            }
+
+            // document.write(sum);
+            // document.getElementById('id_disp').innerHTML = sum;
+            // document.querySelector('#id_disp').innerHTML = sum;
+            // document.querySelector('div').innerHTML = sum;
+            // document.getElementsByTagName('div')[2].innerHTML = sum; // div가 여러 개일 때 인덱스 써주기
+            // document.querySelector('#result').value = sum;//입력양식 요소로는 value, 입력양식이 아닌 요소는 innerHTML
+            document.querySelector("input[type=text]").value = sum; // id값이 없을 때
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="가위바위보" onclick="play();">
+    <div></div>
+</body>
+<script>
+    function play(){
+        var user1 = prompt("첫 번째 사용자 입력", "가위, 바위, 보 중 입력");
+        var user2 = prompt("두 번째 사용자 입력", "가위, 바위, 보 중 입력");
+        var result = "";
+        if(user1 == user2){
+            result = "비김";
+        }else if(user1 == "가위" && user2 == "보" ||
+                  user1 == "바위" && user2 == "가위" ||
+                  user1 == "보" && user2 == "바위"){
+                    result = "uesr1 : " + user1 + "<br>user2 : " + user2 + "<br>첫 번째 사용자 승";
+        }else{
+            //ES6 백틱(backtick / grave accent)
+            //문자열과 변수의 값을 하나의 문자열 안에 기술할 수 있다.
+            //백틱문자열 안에 변수는 ${} 기호 안쪽에 기술한다.
+            //백틱을 이용해 만들어진 문자열을 '템플릿 리터럴'이라 부른다.
+            result = `uesr1 : ${user1}<br>user2 : ${user2}<br>두 번째 사용자 승1`;
+        }
+        // document.write(result);
+        document.querySelector('div').innerHTML = result;
+    }
+</script>
+</html>

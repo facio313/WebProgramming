@@ -21,9 +21,22 @@
     </pre>
 
     <script>
+        // "use strict"; // --> 엄격 모드! 키워드 없이 쓰면 용납 안 됨
+
+        // function fnc() {
+        //     var v_mascot = "꿈돌이";
+        // }
+        // fnc();
+        // console.log(v_mascot);
+        // 나오긴 한데, 다른 곳에서 오류가 발생할 가능성이 높아짐
+        // "use strict";를 쓰면 오류로 나옴!
+
+        // 값이 더 쉬워지면 다른 곳에서 오류가 발생할 가능성이 높아짐
+        // 그래서 나온 것이 var
         // var은 재선언, 재할당이 가능함
+
         var v_mascot = "꿈돌이";
-        var v_mascot = 100;
+        var v_mascot = 100; 
         var v_mascot = true;
         var v_mascot = undefined;
         var v_mascot = null;
@@ -44,6 +57,26 @@
         //기본형은 number, string, boolean이 있음 / .을 찍을 수 없다.(속성에 접근x)
         //참조형은 배열(array)과 JSON(object)가 있음 / .을 찍을 수 있다.(속성에 접근ㅇ)
 
+
+        // 더하기 연산자는 자동으로 문자열로 결합, 나머지는 그냥 숫자 연산
+        var v_sansu = "123" + 456; // 문자열이 결합되면 문자열이 됨
+        var v_sansu = "123" - 456; // -, *, /는 숫자로 promotion되어 정상적으로 연산이 됨
+        console.log(v_sansu);
+
+        alert( parseInt("ABC123") ); // NaN 출력됨 => Not a Number
+        alert( parseInt("123ABC") ); // 문자열을 분리시키고 숫자만 반환
+
+        if("123" == 123){ // loose compare, 동등연산자
+            alert("뜸1"); // 참으로 떠서 경고창이 뜸
+        }
+        
+        if("123" === 123){ // strict compare, 일치연산자
+            alert("뜸2"); // 거짓으로 떠서 경고창이 안 뜸 => 자바 
+        }
+
+        if([] == []) {  // 배열 = 객체, 각각의 객체들은 다른 주소 값을 가짐. 그래서 다른 주체이다!
+            alert("뜸3") // 거짓
+        }
     </script>
 </body>
 </html>

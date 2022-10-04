@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    1. 1부터 10까지의 합을 구하는 프로그램을 작성하시오.<br>
+    <script>
+        var sum = 0;
+        for (var i = 1; i <= 10; i++) {
+            sum += i;
+        }
+        document.write(sum);
+    </script>
+    <br>
+    2. 1부터 200까지의 짝수의 합을 구하는 프로그램을 작성하시오(continue)<br>
+    <script>
+        var sum = 0;
+        for (var i = 1; i <= 200; i++) {
+            if (i % 2 == 0) {
+                sum += i;
+            } else {
+                continue;
+            }
+        }
+        document.write(sum);
+    </script>
+    <br>
+    3. 사용자가 입력한 값을 계속 더하고, 사용자가 0을 입력하면 그때까지 누적된 값을 출력하는 프로그램을 작성하시오.<br>
+    <input type="button" value="누적 프로그램" onclick="plus();">
+    <input type="text">
+    <script>
+        function plus() {
+            var sum = 0;
+
+            while (!0) {
+                var user = parseInt(prompt("숫자를 입력하세요.", "0을 입력하면 종료합니다."));
+                if (user > 0 || user < 0) {
+                    sum += user;
+                } else if (user == 0) {
+                    break;
+                }
+            }
+            document.querySelector("input[type = text]").value = sum;
+        }
+    </script>
+    <br>
+    4. 다중 for문을 이용하여 1 ~ 10 중 i와 k의 더한 합이 3의 배수일 때만 출력하시오(continue)<br>
+    <script>
+        var kum;
+        for (var i = 1; i <= 9; i++) {
+            for (var k = 1; k <= 9; k++) {
+                if (((i+k) % 3 == 0) && (i+k <= 10)) {
+                    kum = i + k;
+                    document.write(kum + " ");
+                } else {
+                    continue;
+                }
+            }
+        }
+    </script>
+    <br>
+    5. 1 ~ 100 중 2의 배수이면서 3의 배수인 것만 출력하시오<br>
+    <script>
+        for (var i = 1; i <= 100; i++) {
+            if ((i % 2 == 0) && (i % 3 == 0)) {
+                document.write(i + " ");
+            }
+        }
+    </script>
+    <br>
+    6. 두 수를 입력(prompt) 두 수의 합이 100 이상일 때만 출력하시오(continue, 두 수 모두 0이 입력되면 종료)<br>
+    <input type="button" value="합 100 이상" onclick="no6();">
+    <div id="no6"></div>
+    <script>
+        function no6() {
+            var one = parseInt(prompt("첫 번째 숫자를 입력하세요.", "첫 번째, 두 번째 모두 0이면 종료합니다."));
+            var two = parseInt(prompt("두 번째 숫자를 입력하세요.", "첫 번째, 두 번째 모두 0이면 종료합니다."));
+            var total = one + two;
+
+            while (!0) {
+                if (total >= 100) {
+                    // document.write(total);
+                    document.querySelector('#no6').innerHTML = total
+                } else if (total < 100) {
+                    continue;
+                } else {
+                    break;
+                }
+            }
+        }
+    </script>
+    <br>
+</body>
+
+</html>

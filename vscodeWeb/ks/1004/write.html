@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="눌렁" onclick="f_write();">
+    <script>
+        function f_write(){
+            // document.write는 기존에 만들어진 요소에 덮어씌워지는 특징 존재 - 주의 요망
+            document.write("<div style='border: 1px dashed red;'>DIV</div>");// "" 안에 '' 활용. 안에 ""를 쓰고 싶다면 \"\"
+            document.write(`<img src='../images/imgs/1.jpg' alt = "도기">`);// ~키를 그냥 치면 `(!== ')
+        }
+    </script>
+</body>
+</html>
