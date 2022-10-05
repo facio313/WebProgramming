@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+
+        // 변수 호이스팅
+        console.log(a); //에러를 내지 않고 undifined를 출력
+        let a;
+        // var a;
+        // a = "에러를 내지 않고 undefined를 출력"
+        // console.log(a);
+
+        // 함수 호이스팅
+        showName();
+        // function showName(){     // 선언식 함수 형태
+        var showName = function() { // 표현식 함수 형태(=무명함수)
+            // 변수호이스팅
+            console.log(name);
+            var name = "lyj";
+            console.log(name); // lyj
+        }
+    </script>
+</head>
+<body>
+    <pre>
+        javascript 고유 기능 - hoisting
+        함수 또는 변수의 선언부를 최상단으로 끌어올려주는 기능
+        대상은 var과 선언식 함수로 제한(=let, const, 표현식 함수는 적용 안 됨)
+
+        변수 호이스팅 : 변수 선언 전 출력에도 에러 발생하지 않음
+        함수 호이스팅 : 선언문 형태의 함수는 미리 호출해도 에러발생 안 됨
+
+        잘못된 흐름의 코드이지만 에러를 발생시키지는 않음
+        하지만 호이스팅이 발생할 코드의 작성을 지양하고,
+        표현식 함수와 let, const 키워드의 활용을 권장함
+    </pre>
+</body>
+</html>
