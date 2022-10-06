@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+// 리터럴 방식
+// {property key : property value}의 형태
+// property value가 함수인 경우 메소드라 지칭한다.ㄴ
+
+var myObj = {
+    name : "비욘세",
+    age  : 41,
+    hello : function(){
+        // return "이름은 " + this.name + "이고," + "나이는 " + this.age + "입니당";
+        return `이름은 ${this.name}이고, 나이는 ${this.age}입니당`;
+    }
+}
+// console.log(myObj.name);
+// console.log(myObj.hello());
+
+// 생성자 방식 - new연산자와 내장객체를 이용
+var myObj2 = new Object();
+myObj2.name = "비욘세";
+myObj2["age"] = 41; // 배열식 접근법
+myObj2.hello = function(){
+    return `이름:${this.name} 나이:${this.age}`;
+}
+// console.log(myObj2["name"]);
+// console.log(myObj2["hello"]());
+
+// new연산자로 String객체 생성
+var strObj = new String("hello");
+var strObj1 = "hello"; // 대체 가능
+// console.log(Object.keys(strObj));
+// console.log(Object.values(strObj));
+
+// new Array객체 생성
+var arrObj = new Array([1, 2, 3],[4, 5]);
+var arrObj1 = [[1, 2, 3],[4, 5]];
+// console.log(Object.entries(arrObj));
+
+// custom Object(대문자로 시작)
+var SelfObj = function(name, age){
+    this.name = name;
+    this.age = age;//.으로 접근하면 효율성 굳
+    this["한국나이"] = parseInt(age) + 2; // 하지만 숫자는 .으로 접근하지 못해서..
+    // this.한국나이 = parseInt(age) + 2; // 한글은 됨
+    this[1] = '배열식 접근법';
+    this.hello = function(){
+        return `이름은 ${this.name}이고 \r\n나이는 ${this.age}/${this[한국나이]} \r\n숫자로 된 key는 ${this[1]}으로 표시!!`
+    }
+}
+//  \r : 캐리지 리턴    +    \n : 라인피드    =  Enter키
+//  맥에서는 이것만          유닉스에서는 이것만
+//  윈도우에서는 듈 댜
+
+// custom Object - 성성자함수를 사용해서 객체 생성
+var sObj = new SelfObj('Beyonce', '41');
+
+// 속성 추가
+// sObj.팬클럽 = "욘세";
+// sObj.[팬 클럽] = "욘세"; // 그냥 넣으면 변수로 인식함
+sObj["팬클럽"] = "욘세";// 문자열로 넣어야 함
+
+// 메소드 추가
+sObj.fan = function(){
+    return `팬클럽:${this["팬클럽"]},\r\n팬클럽:${this.팬클럽}`;
+}
+delete sObj.팬클럽;
+console.log(sObj.팬클럽);
+
+/* 속성과 메서드의 접근방법
+
+1. 객체.key
+2. 객체["key"] >> 반드시 문자열 형태로 key 접근
+*식별자로 허용되지 않는 숫자가 들어간 속성 사용 시 반드시 배열식(대괄호) 표기법을 사용한다.
+3. 변수참조방식
+*key가 문자열로 표시되지 않은 경우변수로 인식함 주의!
+var key = "age";
+myObj[key]
+
+*/
+
+</script>
+</body>
+</html>

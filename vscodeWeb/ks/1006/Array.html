@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+var arr = ["최경수", "박시윤", "유나래", "민경진", "최경수", "김서빈", "이찬영"];
+
+// indexOf(value, startIdx) - 위치 index를 반환 / startIdx는 선택사항
+// var name = "최경수";
+// var name = "최경주"; // -> 없는 데이터는 -1을 반환
+// var arrIdx = arr.indexOf(name); // 0
+// var arrIdx = arr.indexOf(name, 1); // 4 // ~부터로 범위 지정
+// console.log("indexOf : ", arrIdx);
+
+// lastIndexOf(value, endIdx) - 위치index를 뒤에서부터 검색 후 반환
+// var arrIdx = arr.lastIndexOf(name); // 4
+// var arrIdx = arr.lastIndexOf(name, 3); // 0
+// console.log("lastIndexOf : ", arrIdx);
+
+// push(배열 끝에 추가), unshift(배열 처음에 추가)
+// arr.push("허근주");
+// arr.unshift("허근주");
+// console.log(arr);
+
+// pop(배열 끝 요소 삭제 및 반환), shift(배열 처음 요소 삭제 및 반환)
+// var val = arr.pop();
+// console.log(arr, "반환된 데이터 : ", val);
+
+// reverse
+// console.log(arr.reverse());
+
+// slice (start ~ end-1 범위를 새 배열로 만듦)
+// console.log(arr.slice(2, 5));
+
+// splice - 배열의 수정(삭제 및 요소 추가)
+// splice(idx, n, a, b, c, ...) 삭제 위치, 삭제 개수, 추가 요소a, b, c, ...
+console.log("기존 : ", arr);
+arr.splice(3, 3, "도우너", "또치", "희동이");
+console.log("변경 : ", arr);
+
+var arr1 = [1, 2, 3];
+var arr2 = [true, false];
+var arr3 = ["점심", "시간"];
+var newArr = arr1.concat(arr2, arr3);
+console.log(newArr);
+console.log(newArr[5]);
+</script>
