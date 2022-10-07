@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    // Array sort()
+
+    var v_testArr1 = [12, 100, 230, 32, 300, 24, 512];
+    var v_testArr2 = ["가영", "라영", "다영", "나영", "하영"];
+    
+    // callback이 없이 사용되는 sort() => 자동 오름차순 정렬 (사전순)
+    // 많이 쓰이지 않음
+    // console.log("사전 순 정렬 : ",v_testArr1.sort());
+    // console.log("사전 순 정렬 : ",v_testArr2.sort());
+
+    // callback을 사용하여 크기순으로 정렬
+    // v_testArr1.sort(function(a,b){
+    v_testArr2.sort(function(a,b){
+        console.log("a : ", a, "b : ", b);
+        // return a - b; // 음수일 대 자리를 변경 => 오름차순 결과
+        return b - a; // 음수일 대 자리를 변경 => 내림차순 결과
+    });
+    // console.log("사전순 숫자정렬 : ", v_testArr1);
+    console.log("크기순 숫자정렬 : ", v_testArr2);
+    
+    
+    // alert(parseInt("라영")); // NaN
+    // 숫자연산이 불가능한 문자열은 비교연산자를 이용해서 처리
+    // 비교연산자는 내부적으로 값을 unicode로 바꿔서 비교하기 때문에 가능
+
+    if("라영" >= "다영"){
+        // alert("라영이가 유니코드 숫자가 높으므로 알람창이 뜨겠지");
+    }
+
+    v_testArr2.sort(function(a,b){
+        if(a >= b){
+            return -1;
+        }
+        return 1;
+    });
+
+    console.log("크기순 문자졍렬 : ", v_testArr2);
+
+</script>

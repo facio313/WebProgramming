@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#id_clock {
+    color: gold;
+    background-color: black;
+    font-size: 30px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+    <div id="id_clock">00:00:00</div>
+</body>
+<script>
+    console.log(id_clock); // 대상요소를 id로 접근, 테스트에만 활용
+    // 아래 방식으로 요소에 접근하고 사용합시다.
+    var v_clk1 = document.getElementById("id_clock");
+    // console.log("elementId", v_clk1);
+    var v_clk2 = document.getElementsByTagName("div")[0];
+    // console.log("elementsTag", v_clk2);
+    var v_clk3 = document.querySelector("#id_clock");
+    // console.log("querySelector", v_clk3);
+
+setTimeout(function f_clock(){
+    var v_today = new Date();
+    var v_hour = v_today.getHours(); // 시
+    var v_min = v_today.getMinutes();// 분
+    var v_sec = v_today.getSeconds();// 초
+
+    // console.log(v_hour, ":", v_min, ":", v_sec);
+    v_clk1.innerHTML = v_hour + ":" + v_min + ":" + v_sec;
+    setTimeout(f_clock, 1000); //재귀호출
+},1000);
+</script>
+</html>
