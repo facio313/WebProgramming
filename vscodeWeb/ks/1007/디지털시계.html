@@ -31,8 +31,38 @@ setTimeout(function f_clock(){
     var v_min = v_today.getMinutes();// 분
     var v_sec = v_today.getSeconds();// 초
 
+    // console.log(typeof v_sec);// -> number임으로 length 속성을 사용할 수 없음
+    // console.log(typeof v_sec.toString());
+    
+    // 방법1
+    // if(v_sec < 10){
+    //     v_sec = "0" + v_sec;
+    // }
+    
+    // if(v_min < 10){
+    //     v_min = "0" + v_min;
+    // }
+    
+    // if(v_hour < 10){
+    //     v_hour = "0" + v_hour;
+    // }
+
+    // 방법2
+    if(v_sec.toString().length == 1) {
+        v_sec = "0" + v_sec;
+    }
+    
+    if(v_min.toString().length == 1) {
+        v_min = "0" + v_min;
+    }
+    
+    if(v_hour.toString().length == 1) {
+        v_hour = "0" + v_hour;
+    }
+    
     // console.log(v_hour, ":", v_min, ":", v_sec);
     v_clk1.innerHTML = v_hour + ":" + v_min + ":" + v_sec;
+    
     setTimeout(f_clock, 1000); //재귀호출
 },1000);
 </script>

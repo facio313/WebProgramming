@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script src="../js/random.js"></script>
+<script>
+    console.log(Math.random()); // 0~1 사이 소수점 난수 발생
+
+    // 1~10까지 숫자 발생 - ceil() 이용
+    console.log(Math.ceil(Math.random()*10));
+    // 0~10까지 숫자 발생 - 
+    console.log(Math.floor(Math.random()*11));
+    // 4~9까지 숫자 발생
+    console.log(Math.floor(Math.random()*6)+4);
+    // 65 ~ 100까지 랜덤수 발생
+    console.log(Math.floor(Math.random()*36)+65);
+    // random.js에 random기본 함수 생성해놨음
+    console.log("65~100", f_random(65,100));
+
+    function f_random(p_start, p_end){
+        return Math.floor(Math.random()*(p_end-p_start+1))+p_start;
+    }
+</script>

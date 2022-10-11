@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="새 창 open" onclick="f_winOpen()">
+    <input type="button" value="새 창 close" onclick="f_winCls()">
+    <script>
+        function f_winOpen(){
+            win = open("새창.html", "narae", "width=400, height=300, top=140 left=660");
+        }
+
+        function f_winCls(){
+            win.close();
+        }
+    </script>
+</body>
+</html>

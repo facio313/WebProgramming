@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="lotto()">로또생성</button>
+    <div></div>
+    <script src="../js/random.js"></script>
+    <script>
+        function lotto() {
+            var lotto = [];
+            //중복되지 않는 6개의 랜덤(1~45)숫자 발생
+            for (var i = 0; i < 6; i++) {
+                var ran = f_random(1, 45);
+                //중복 체크
+                if (lotto.indexOf(ran) == -1) {// 중복되지 않은 수
+                    lotto[i] = ran;
+                } else {
+                    i -= 1; // 진행된 index 복구
+                }
+            }
+            lotto.sort(function(a,b){return a-b}); //오름차순
+            document.querySelector("div").innerHTML += lotto + "<br>";
+        }
+    </script>
+</body>
+
+</html>
