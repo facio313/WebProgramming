@@ -5,6 +5,22 @@
     <title>Document</title>
 </head>
 <body>
-    새창
+    <h3>열린 창</h3>
+    <textarea id="new_text" cols="30" rows="20" onkeydown="f_kd()"></textarea>
+    <input type="button" value="버튼" onclick="f_chat()">
+    <script>
+        function f_kd(){
+            // console.log(event);
+            // if(event.keyCode == 13){
+            if(event.keyCode == 'Enter'){
+                f_chat();
+            }
+        }
+        var v_newTxt = document.querySelector("#new_text");
+        function f_chat(){
+            // 부모창을 나타내는 키워드 opener
+            opener.document.querySelector("#old_text").value = v_newTxt.value;
+        }
+    </script>
 </body>
 </html>

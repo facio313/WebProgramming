@@ -5,11 +5,18 @@
     <title>Document</title>
 </head>
 <body>
+    <textarea id="old_text" cols="50" rows="30">멀티라인</textarea>
     <input type="button" value="새 창 open" onclick="f_winOpen()">
     <input type="button" value="새 창 close" onclick="f_winCls()">
     <script>
+
+        // name O -> 새 창x
+        // name X -> 새 창o
+        // 세 번째 인자에 값을 주어 창을 떨어져 나오게 만듦
+        // 세 번째 인자에 위치 값(top, left, right, bottom) 조정 시 
+        // 마이너스(-) 값을 주었을 때 좌표 0으로 이동하여 과거 해킹에 이용되던 보안이슈를 해결
         function f_winOpen(){
-            win = open("새창.html", "narae", "width=400, height=300, top=140 left=660");
+            win = open("새창.html", "narae", "width=300, height=410, top=140 left=660");
         }
 
         function f_winCls(){

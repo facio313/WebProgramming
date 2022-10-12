@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- DOM 
+    Document Object Model 문서 객체 모델
+    브라우저가 html 페이지(=웹문서)를 인식(이해)하도록 구성한 문서 객체 모델
+
+    Document와 관련된 객체들의 집합으로, 문서의 구조화된 표현을 제공한다.
+
+    프로그래밍언어가 dom구조에 접근할 수 있도록 방법을 제공하며,
+    그에 따라 구조, 스타일, 내용 변경이 가능
+
+    DOM TREE 구조
+    ★Document 문서노드 : 트리 최상단. 하위로 접근하기 위한 시작점
+    ㄴDocumentType
+    ㄴ★Element 요소노드 : 각종 tag들..
+        ㄴ★Attribute 어트리뷰트노드 : tag의 속성
+        ㄴEntity
+        ㄴEntityReference
+        ㄴ★Text 텍스트노드 : 요소노드의 자식이자 최종단
+    ㄴComment
+    ㄴCDATASection
+    ㄴNotation
+    -->
+    <div id="target" style="font: 20px bold" onclick="addtext('무궁화 꽃이 피었습니다.')">여기를 클릭하세요<br></div>
+    <script>
+
+        //appen와 appendChild의 차이점
+        // append는 Node객체, Dom string(=text) 모두 사용
+        // appendChild는 오직 Node객체만 사용가능
+        function addtext(t){
+            var node = "무궁화 꽃이 피었습니다.";
+            document.getElementById("target").append(node); // append는 문자도 됨!
+            // var node = document.createTextNode(t);
+            // document.getElementById("target").appendChild(node); // appendChild는 node만 집어넣을 수 이ㅃㅅ음
+        }
+    </script>
+
+</body>
+</html>
