@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div {
+            border: 1px solid orange;
+        }
+    </style>
+</head>
+<body>
+    <!-- 많은 이벤트가 존재하지만 실제로 사용하는 건 많지 않음 -->
+    <div style="width: 100px; height: 100px;" onmouseover="f_long(this)"
+          onmouseout="f_stop()">길어지슈</div>
+    <div style="width: 100px; height: 100px;" onmouseover="f_tall(this)"
+          onmouseout="f_stop()">늘어지슈</div>
+    <div style="width: 100px; height: 100px;" onmouseover="f_wide(this)"
+          onmouseout="f_stop()">넓어지슈</div>
+
+    <script>
+        var timer;
+        function f_stop(){
+            clearTimeout(timer);
+        }
+
+        function f_long(p_this){
+            /* 스크립트에서는 인라인 형식의 스타일 정보만 조희 가능
+            없을 경우 스크립트에서 직접 초기화하는 방법
+            if(!p_this.style.width){
+                p_this.style.width = "100px"
+            }
+                직접 인라인 방식으로 입력하는 방법도..
+            */
+           p_this.style.width = parseInt(p_this.style.width) + 10 + "px";
+           timer = setTimeout(f_long, 400, p_this);
+        }
+        
+        function f_tall(p_this){
+            p_this.style.height = parseInt(p_this.style.height) + 10 + "px";
+            timer = setTimeout(f_tall, 400, p_this);
+        }
+        
+        function f_wide(p_this){
+            p_this.style.width = parseInt(p_this.style.width) + 10 + "px";
+            p_this.style.height = parseInt(p_this.style.height) + 10 + "px";
+            timer = setTimeout(f_long, 400, p_this);
+            timer = setTimeout(f_tall, 400, p_this);
+        }
+
+    </script>
+</body>
+</html>

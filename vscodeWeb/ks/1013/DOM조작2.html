@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .child {
+            border: 1px solid green;
+            font-size: 2em; /* 기본 사이즈의 2배 */
+        }
+        .꽁지{
+            font-style: italic;
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div id="parent">엄마까투리
+        <!-- div.child*4 -->
+        <div class="child">마지</div>
+        <div class="child">두리</div>
+        <div class="child">세찌
+            <h1 id="sonja">손자</h1>
+        </div>
+        <div class="child">꽁지</div>
+    </div>
+    <script>
+        var parent = document.querySelector("#parent");
+        var sonja = document.querySelector("#sonja");
+        // cloneNode()      - 얕은 복사 = 거의 사용하지 않음
+        // clondNode(treu)  - 깊은 복사 = 대상의 하위 요소까지 복사
+        var copy1 = parent.cloneNode(); // 대상을 복사, 인자가 없는 상태는 얕은 복사(잘 안 씀)
+        var copy2 = parent.cloneNode(true); // 대상을 복사, 인자가 true 상태는 깊은 복사
+        console.log("원본", parent);
+        console.log("얕은 복사", copy1);
+        console.log("깊은 복사", copy2);
+
+        parent.children[3].style.fontSize = "4em"; // children[]-> 자식요소에 접근
+        var child = parent.children; // 자식요소를 배열 값으로 다 넘겨줌
+        // class는 속성 이전에 예약어이므로 setAttribute()를 이용해서 속성을 적용해야 함
+        child[3].class = "꽁지"; // 적용되지 않음
+        child[3].setAttribute("class", "꽁지");
+
+        // 삭제
+        parent.removeChild(child[1]);
+
+        // 부모에서 자식 선택
+        var magi = parent.children[0]; // 마지
+        // 자식에서 부모 선택
+        magi.parentElement.style.border = "10px dashed gold";
+        sonja.parentElement.parentElement.style.border = "5px inset purple";
+        
+    </script>
+</body>
+</html>

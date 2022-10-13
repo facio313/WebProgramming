@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #id_disp {
+            font-size: 0;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div id="id_disp">
+        <img src="../images/1.jpg" alt="">
+        <img src="../images/2.jpg" alt="">
+        <img src="../images/3.jpg" alt="">
+        <img src="../images/4.jpg" alt="">
+    </div>
+    <input type="button" value="이동" id="move">
+    <input type="button" value="&gt;&gt;" id="autoR">
+    <input type="button" value="<<" id="autoL">
+    <input type="button" value="정지" id="stop">
+    <script>
+        var v_mv = document.querySelector("#move");
+        var v_stop = document.querySelector("#stop");
+        var v_autoR = document.querySelector("#autoR");
+        var v_autoL = document.querySelector("#autoL")
+        var v_disp = document.querySelector("#id_disp");
+        var to;
+        
+        v_mv.addEventListener("click", function(){
+            var img1 = document.querySelectorAll("img")[0];
+            v_disp.appendChild(img1);
+        });
+        
+        v_stop.addEventListener("click", function(){
+            clearTimeout(to); // setTimeout 기능 정지
+            v_autoR.removeAttribute("disabled"); // 비활성화 속성 제거
+            v_autoL.removeAttribute("disabled");
+        });
+
+        v_autoR.addEventListener("click", function fn1(){
+            v_autoR.setAttribute("disabled", true);
+            var last = v_disp.lastElementChild;
+            // 마지막 요소를 대상을 앞쪽으로 붙여야 되는데..
+            // insertBefore(삽입대상, 삽입위치지정)
+            v_disp.insertBefore(last,v_disp.firstChild);
+            to = setTimeout(fn1, 500);
+        });
+
+        v_autoL.addEventListener("click", function fn1(){
+            v_autoL.setAttribute("disabled", "disabled");
+            var first = v_disp.firstElementChild;
+            v_disp.insertBefore(first,v_disp.lastChild);
+            to = setTimeout(fn1, 500);
+        });
+    </script>
+</body>
+</html>

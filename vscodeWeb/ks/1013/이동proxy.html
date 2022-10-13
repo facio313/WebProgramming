@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #id_disp {
+            font-size: 0;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div id="id_disp">
+        <img src="../images/1.jpg" alt="">
+        <img src="../images/2.jpg" alt="">
+        <img src="../images/3.jpg" alt="">
+        <img src="../images/4.jpg" alt="">
+    </div>
+    <input type="button" value="&gt;&gt;" onclick="f_proxyRight()">
+    <input type="button" value="<<" onclick="f_proxyLeft">
+    <input type="button" value="정지" onclick="f_proxyEnd()">
+    <script>
+        var v_stop = document.querySelector("#stop");
+        var v_autoR = document.querySelector("#autoR");
+        var v_autoL = document.querySelector("#autoL")
+        var v_disp = document.querySelector("#id_disp");
+        var to;
+        
+        
+        function f_stop(){
+            clearTimeout(to);
+        };
+
+        function f_right(){
+            var last = v_disp.lastElementChild;
+            v_disp.insertBefore(last,v_disp.firstChild);
+            to = setTimeout(f_right, 500);
+        };
+
+        function f_left(){
+            var first = v_disp.firstElementChild;
+            v_disp.insertBefore(first,v_disp.lastChild);
+            to = setTimeout(f_left, 500);
+        };
+
+        // proxy patter(대리자 패턴)
+        var exist = false; // 상태변수, 사용 안 함 상태
+        
+        function f_proxyRight(){
+            if(!exist){
+                f_right(); // 대리인이 대신 호출합니다
+                exist = true; // 사용 중으로 상태를 변경해요
+            }
+        }
+
+        function f_proxyLeft(){
+            if(!exist){
+                f_left(); // 대리인이 대신 호출합니다
+                exist = true; // 사용 중으로 상태를 변경해요
+            }
+        }
+
+        function f_proxyEnd(){
+            f_stop(); // 기능 정지
+            exist = false; // 사용 안 함 상태로 변경
+        }
+    </script>
+</body>
+</html>
