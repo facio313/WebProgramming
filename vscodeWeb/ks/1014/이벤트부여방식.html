@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 방식1. 인라인 스타일 -->
+    <!-- <button onclick="fn">버튼</button> -->
+    <button id="btn1">버튼1</button>
+    <button id="btn2">버튼2</button>
+    <script>
+        // 방식2. 스크립트에서 요소 대상으로 onclick=fn
+        // 하나의 요소에 여러 이벤트를 적용 시 덮여 쓰이다가 마지막 이벤트만 실행
+        btn1.onclick = function(){
+            alert("메롱");
+        }
+
+        var v_count=0;
+        btn1.onclick = function(){
+            /* 위헙한 소스. 함수 안쪽에서 누적되어 실행되므로 주의
+            btn2.addEventListener('click', function(){
+            alert("실행" + v_count);
+            }); */
+            
+            // 위보다는 안전한 소스 = 함수 안쪽에서 한 번만 실행
+            btn2.onclikc = function(){
+            alert("실행" + v_count);
+            }
+            v_count++
+            console.log(v_count);
+            alert("안 메롱");
+        }//--> 이것만 실행됨
+
+        // 방식3. 스크립트에서 요소.addEventlistener(event, fn)
+        // 같은 요소에 여러 이벤트를 적용하여도 이벤트 큐에 순차적으로 쌓아놓고 모두 실행
+
+        btn2.addEventListener('click', function(){
+            alert("메롱메롱");
+        });
+        btn2.addEventListener('click', function(){
+            alert("또 메롱메롱");
+        });
+        
+    </script>
+</body>
+</html>

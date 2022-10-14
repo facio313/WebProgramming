@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #disp{
+            border: 3px solid pink;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h4>마우스 이벤트</h4>
+    <!-- 우클릭 => contextmenu 없애기 -->
+    <!-- 1. false 반환받기  <div id="disp" onmousedown="f_down()" onmouseup="f_up()" oncontextmenu="return f_ctxt()"></div> -->
+    <!-- 2. 직접 false 적용 <div onmousedown="f_down()" onmouseup="f_up()" id="disp" oncontextmenu="return false;"></div> -->
+    <!-- 3. --><div onmousedown="f_down()" onmouseup="f_up()" id="disp" oncontextmenu=""></div>
+    <script>
+        /*function f_ctxt(){
+            return false;
+        }*/
+
+        var v_disp = document.querySelector("#disp");
+
+        // 3.contextmenu의 기본이벤트를 중지시키기
+        v_disp.addEventListener("contextmenu", function(){
+            event.preventDefault(); // 기능 중지
+        });
+
+        function f_up(){
+            // alert("눌렀던 버튼을 놓음");
+        }
+
+        function f_down(){
+            // event.button => 0, 1, 2
+            // alert("어느 버튼을 눌렀을까요"+event.button);
+            if(event.button == 0){
+                v_disp.innerHTML = "<h4>왼쪽 누름</h4>"
+            } else if(event.button == 1){
+                v_disp.innerHTML = "<h4>가운데 누름</h4>"
+            } else {
+                v_disp.innerHTML = "<h4>오른쪽 누름</h4>"
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div {
+            position: relative;
+            left: 30px;
+            top: 30px;
+            border: 2px solid black;
+        }
+        #halmoney {
+            width:  300px;
+            height: 300px;
+        }
+        #mom {
+            width: 200px;
+            height: 200px;
+        }
+        #na {
+            width: 90px;
+            height: 90px;
+        }
+    </style>
+</head>
+<body>
+    <h4>이벤트 관련 두 가지 메서드 기억하기 <br>
+        preventDefault() : 기본 장착된 이벤트 기능 막음
+    </h4>
+    <a href="../images/1.jpg" class="view">이미지 보기</a>
+    <form action="이벤트등록.html">
+        <input type="submit" value="제출">
+    </form>
+    <h4>stopPropagation() : 이벤트 버블링을 막음</h4>
+    <div id="halmoney" onclick="f_hal(this)">할머니
+        <div id="mom" onclick="f_mom(this)">엄마
+            <div id="na" onclick="f_na(this)">나</div>
+        </div>
+    </div>
+
+    <script>
+        function f_hal(p_this){
+            p_this.style.border = "4px dotted brown";
+        }
+        function f_mom(p_this){
+            p_this.style.border = "4px inset gold";
+            event.stopPropagation(); // 이벤트 버블링 중지
+        
+        }
+        function f_na(p_this){
+            p_this.style.backgroundColor = "purple";
+            event.stopPropagation(); // 이벤트 버블링 중지
+        }
+
+
+        var v_view = document.querySelector(".view");
+        var v_from = document.querySelector("form");
+        v_view.addEventListener('click', function(){
+            event.preventDefault(); //하이퍼링크의 기능 상실
+        });
+        v_form.addEventListener('click', function(){
+            event.preventDefault(); //form-submit의 기능 상실
+        });
+    </script>
+</body>
+</html>
