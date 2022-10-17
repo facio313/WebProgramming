@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #dropArea {
+            width: 400px;
+            border: 3px solid aqua;;
+        }
+    </style>
+</head>
+<body>
+    <ol id="id_flist"></ol>
+    <div id="dropArea" ondragover="f_dover()" ondrop="f_drop()">
+        여기로
+    </div>
+    <script>
+        var v_area = document.querySelector("#dropArea");
+        var v_flist = document.querySelector("#id_flist");
+
+        function f_dover(){
+            event.preventDefault();
+        }
+        // FileReader 객체 생성하기
+        // 새 요소 생성해서 대상 append하기
+        // v_files를 대상으로 readAsDataURL => result 받기
+        function f_drop(){
+            var v_files = event.dataTransfer.files; // 파일 여러 개
+
+            // 개수 제한 - 5개까지만 표현 / 5 이상일 때 메시지 띄우기
+            if(v_files.length >= 6){
+                alert("5개만 올릴 수 있습니다.");
+                return;
+            }
+
+            v_area.innerHTML = ""; // 영역초기화
+            v_flist.innerHTML = "";
+
+            for (var i = 0; i < v_files.length; i++){
+                reader(v_files[i]);
+            }
+
+            // if(v_files.length >= 6){
+            //     alert("5개만 올릴 수 있습니다.");
+            //     return;
+            // } else{
+            //     for (var i = 0; i < v_files.length; i++){
+            //             reader(v_files[i]);
+            //     }
+            // }
+
+            // for (var i = 0; i < v_files.length; i++){
+            //     if(i < 5){
+            //         reader(v_files[i]);
+            //     } else {
+            //         alert("5개만 올릴 수 있습니다.");
+            //         return;
+            //     }
+            // } 
+
+        }
+        
+        function reader(p_file){
+            var v_freader = new FileReader();
+            v_freader.onload = function(){
+                var v_img = document.createElement("img");
+                v_img.src = v_freader.result;
+                v_img.width = 50;
+                v_img.setAttribute("height", "50px");
+                v_area.appendChild(v_img);
+
+                // file list 추가
+                var v_li = document.createElement("li");
+                v_li.innerHTML = p_file.name;
+                v_flist.appendChild(v_li);
+            }
+            v_freader.readAsDataURL(p_file);
+        }
+
+        window.addEventListener("dragover", function(){
+            event.preventDefault();
+        });
+        window.addEventListener("drop", function(){
+            event.preventDefault();
+        });
+    </script>
+</body>
+</html>

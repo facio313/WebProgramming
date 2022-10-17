@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
-        #drop {
+        .drop {
             width:  400px;
             height: 200px;
             border: 3px solid aquamarine;
@@ -15,30 +15,33 @@
     </style>
 </head>
 <body>
-    <div id="drop">여기로 올려주세요</div>
+    <div class="drop">여기로 올려주세요1</div>
+    <div class="drop">여기로 올려주세요2</div>
     <hr>
     <img id="a" src="../images/1.jpg" draggable="true">
     <script>
         var v_img = document.querySelector("img");
-        var v_dropArea = document.querySelector("#drop");
+        var v_dropAreas = document.querySelectorAll(".drop");
 
         v_img.addEventListener('dragstart', function(){
             //dataTransfer 객체에 'imgId'이름으로 타겟의id정보 저장
             event.dataTransfer.setData('imgId', event.target.id);
         });
 
-        v_dropArea.addEventListener('dragover', function(){
-            //dragover: 대상 위로 드래그되는 순간의 이벤트
-            //요소ㅗ아 요소는 겹쳐질 수 없는 전제
-            // 기본 기능 중지 => 대상 위로 드래그되는 상태를 상실
-            //dragover의 기능 막음으로써 드롭 허용
-            event.preventDefault(); 
-        });
+        for (var i = 0; i < v_dropAreas.length; i++){
+            v_dropAreas[i].addEventListener('dragover', function(){
+                //dragover: 대상 위로 드래그되는 순간의 이벤트
+                //요소dghk 요소는 겹쳐질 수 없는 전제
+                // 기본 기능 중지 => 대상 위로 드래그되는 상태를 상실
+                //dragover의 기능 막음으로써 드롭 허용
+                event.preventDefault(); 
+            });
+            v_dropAreas[i].addEventListener('drop', function(){
+                var imgId = event.dataTransfer.getData('imgId');
+                event.target.appendChild(document.querySelector("#" + imgId));
+            });
+        }
 
-        v_dropArea.addEventListener('drop', function(){
-            var imgId = event.dataTransfer.getData('imgId', event.target.id);
-            event.target.appendChild(document.querySelector("#" + imgId));
-        });
     </script>
 </body>
 </html>

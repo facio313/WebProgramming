@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #id_disp {
+            border-style: solid;
+        }
+    </style>
+</head>
+<body>
+    <input type="file" multiple name="" id="id_file" accept=".jpg, .png, .jfif, .gif">
+    <div id="id_disp"></div>
+    <script>
+        var v_fileBtn = document.querySelector("#id_file");
+        var v_disp = document.querySelector("#id_disp");
+
+        v_fileBtn.onchange = function(){
+            var v_files = v_fileBtn.files; // file 여러 개
+            
+            // 비동기 형식으로 진행되는 코드 때문에 순서가 명확하지 않음으로 오류 발생
+            // => 데이터 처리 및 반영에 문제
+            // 비동기 : 끝나지 않은 상태로 다음 파일로 제어권이 넘어감
+
+            for (var i = 0; i < v_files.length; i++){
+                reader(v_files[i]);
+            }
+        }
+
+        // 비동기적 코드를 해결하기 위해 코드의 분리(Isolation)이 필요
+        function reader(p_file){
+            var rd = new FileReader();
+            rd.onload = function(){
+                var v_img = document.createElement("img");
+                v_img.src = rd.result;
+                v_img.style.width = "50px";
+                v_img.setAttribute("height", "50px");
+                v_disp.appendChild(v_img);
+
+            }
+            rd.readAsDataURL(p_file);
+        }
+    </script>
+</body>
+</html>
