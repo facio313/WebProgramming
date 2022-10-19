@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            // 현재 대상이 유일하기 때문에 단순하게 input으로 선택 가능하지만
+            // 추후 요소가 늘어날 수 있음을 감안하여 더 세밀하게 선택자를 지정한다.
+            $('input[type="button"]').eq(0).on('click',function(){
+                var v_tagP = $('<p title="★" onclick="f_click(this)">Hi jQuery!!</p>');
+                // 대상을 출력영역에 붙여넣기
+                // appendChild() : node만 붙일 수 있다.
+                // append() : node 밑 DOM string 모두 붙여넣을 수 있다.
+                $('#disp').append(v_tagP);
+            });
+            $('input[type="button"]').eq(1).on('click', function(){
+                var v_tagP = $('<p></p>', {
+                    'title' : '♥',
+                    'text' : 'Hello jQuery!!',
+                    'click' : function(){
+                        $(this).css('border','3px dotted pink');
+                    }
+                });
+                v_tagP.appendTo('#disp'); // 자식.append
+            });
+        });
+        function f_click(p_this){
+            $(p_this).css("color", "purple").css("font-size", "2em");
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="$('tag attribute')">
+    <!-- properties에는 속성('key':'value') 또는 이벤트 설정 -->
+    <input type="button" value="$('tag', {properties})">
+    <div id="disp"></div>
+</body>
+</html>
+

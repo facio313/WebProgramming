@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script>
+        var img = document.createElement("img");
+        img.src = "../images/1.jpg"
+
+        $(function(){
+            $('button').on('click', function(){
+                img.style.width = "200px";
+                img.style.height = "200px";
+                $('#disp').append(img);
+            });
+
+            $('#disp').on('click', function(){
+                $('#disp img').css("border", "2px solid red");
+            });
+            
+        });
+    </script>
+</head>
+<body>
+    <button id="button">이미지 추가</button>
+    <div id="disp"></div>
+</body>
+</html>

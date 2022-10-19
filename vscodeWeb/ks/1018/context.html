@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            // $('selector', 'context')
+            // context: 선택자를 검색할 범위 지정 / 생략 시 문서 전체에서 검색
+            $('input', $('#frm2')).css('color', 'red').css('font-size', '1.5em').css('font-style', 'italic'); // 메서드 체이닝
+            $('form').on('click',function(){
+                $('input').css("background-color", "white");
+                $('input', this).css("background-color", "navy");
+            });
+        });
+    </script>
+</head>
+<body>
+    <form id="frm1">
+        <input>
+    </form>
+    <form id="frm2">
+        <input>
+    </form>
+    <form id="frm3">
+        <input>
+    </form>
+</body>
+</html>

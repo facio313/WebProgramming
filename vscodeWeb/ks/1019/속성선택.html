@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <style>
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script>
+        $(function(){
+            // alt 속성을 갖는 img요소 []
+            $('img[alt]').css('border', 'double 4px');
+
+            //속성값이 일치하는 [=]
+            //속성값이 시작하는 [^]
+            $('input[type=button], [href^=mailto]').css("background-color", 'yellow');
+
+            //속성값이 같지 않은 [!=] -> class가 'imgBR'이 아닌 img요소
+            $('img[class!=imgBR]').css("box-shadow", "4px 4px 1px gray"); //x축 y출 blur color
+
+            //속성값이 끝나는 [$=] -> src가 'png'로 끝나는 img요소
+            $('img[src$=png]').css("border", "dotted 4px");
+
+            //속성값이 포함하는 [*=] -> title이 'named'단어를 포함하는 요소
+            $('[title*=named]').css("border", "3px outset hotpink");
+
+            //속성값이 포함하는(공백으로 분리된 값) [~=] -> href가 'ddit'를 포함하는 a요소
+            $('[href~=ddit]').css("text-decoration", "line-through");
+
+            //속성값이 같거나 시작하는 [|=] -> id가 'baskin'이거나 'baskin-'으로 시작하는 img요소
+            $('img[id|=baskin]').css("border-radius", "25px");
+        })
+    </script>
+<script>
+
+</script>
+</head>
+<body>
+    <a href="http://www. ddit .or.kr" title="namedDD">(재)대덕 인재 개발원</a> <br>
+	<a href="mailto: admin@ddit.or.kr">관리자에게 메일보내기</a> <br>
+
+	<img src="../images/1.jpg" class="imgBR" id="baskin">
+	<img src="../images/2.jpg" class="imgBR" id="vaskin">
+	<img src="../images/3.jpg" class="imgBR" id="baskin-robbins">
+	<img src="../images/5.jpg" class="imgBR" id="baskin_Robbins">
+	<img src="../images/6.jpg" title="img named 5">
+	<img src="../images/7.jpg" id="img6" title="coffeePot" alt="actress">
+	<img src="../images/8.jpg" alt="actor">
+		
+	<form>
+		<input title="named textField">
+		<!-- form안에 위치한 button은 submit기능을 갖는다 -->
+		<button type="submit">Submit</button>
+	</form>
+	<button type="submit">Submit</button>
+	<input type="button" value="Button">
+</body>
+</html>

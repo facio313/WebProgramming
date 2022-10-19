@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script>
+        //JS 스타일 적용 - 요소당 하나씩 적용
+        window.onload = function () {
+            var h4s = document.querySelectorAll("h4");
+            h4s[1].style.color = "red";
+            // h4s.style.color = "red"; // -> 에러
+            // 일괄 적용 하고 싶을 때
+            for (var i = 0; i < h4s.length; i++) {
+                h4s[i].style.color = "gold";
+            }
+        }
+        // jQ 스타일 적용 - 일괄 적용                      후순위 적용
+        $(document).ready(function () {
+            var h4s = $('h4');
+            h4s.css("color", "orange");
+            // 요소 하나만 선택하고 싶을 때
+            // eq(idx) element queue : 요소 행렬
+            h4s.eq(2).css("color", "purple");
+        })
+        
+    </script>
+</head>
+
+<body>
+    <h4>jQuery1</h4>
+    <h4>jQuery2</h4>
+    <h4>jQuery3</h4>
+    <h4>jQuery4</h4>
+</body>
+
+</html>

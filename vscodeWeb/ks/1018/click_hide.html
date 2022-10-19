@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script>
+        function f_clickhide(p_this){
+            // alert(p_this.innerHTML);
+            // p_this.style.display = "none"; // JS방식
+            // p_this.hide(); // 매개변수 p_this는 DOM객체이므로 jQuery메서드 사용불가
+            $(p_this).hide(); // $()에 DOM객체를 전달하여 jQuery객체로 만듦
+        }
+        // jQuery에서 사용하는 문서 준비
+        $(document).ready(function(){});
+        // 더 짧은 형태로 사용 가능
+        $(function(){ // jQuery 문서 준비 코드지만 js코드도 쓸 수 있음
+            // jQuery 이벤트 부여 - on()
+            $('#jq h5').on('click', function(){
+                $(this).hide();
+                // 버튼 보이기
+                if($('#jq h5:visible').length < 1){
+                    // 버튼 선택자.show()
+                    $('#jq button').show();
+                }
+            });
+            // 버튼에 이벤트 부여
+            $('#jq button').on('click', function(){
+                $('#jq h5').show(); // 대상요소 보이기
+                $(this).hide(); // 버튼 숨기기
+            });
+
+            // 자바 스크립트 방식
+            var v_js = document.querySelectorAll("#js h5");
+            var v_jsBtn = document.querySelector("#js button");
+            var v_cnt = 0;
+            for (var i = 0; i < v_js.length; i++){
+                v_js[i].addEventListener('click', function(){
+                    this.style.display = "none";
+                    v_cnt++; // 숨김 처리 후 카운트 값 증가
+                    // 버튼 보이기
+                    if (v_js.length == v_cnt){
+                        // 버튼 선택자.style.display = "block";
+                        v_jsBtn.style.display = "block";
+                    }
+                });
+            }
+            // 버튼 이벤트
+            v_jsBtn.onclick = function(){
+                // 대상요소(여러 개) 보이기
+                for (var i = 0; i < v_js.length; i++){
+                    v_js[i].style.display = "block";
+                }
+                // 버튼 숨기기
+                this.style.display = "none";
+                v_cnt = 0;
+            }
+
+        }); // document ready end
+    </script>
+    <style>
+        button{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h5 onclick="f_clickhide(this)">클릭하면 사라져요1</h5>
+    <h5 onclick="f_clickhide(this)">클릭하면 사라져요2</h5>
+    <h5 onclick="f_clickhide(this)">클릭하면 사라져요3</h5>
+    <h5 onclick="f_clickhide(this)">클릭하면 사라져요4</h5>
+
+    <div id="jq">
+        <h5>click = hide1</h5>
+        <h5>click = hide2</h5>
+        <h5>click = hide3</h5>
+        <h5>click = hide4</h5>
+        <button>show</button>
+    </div>
+    <div id="js">
+        <h5>click = hide1</h5>
+        <h5>click = hide2</h5>
+        <h5>click = hide3</h5>
+        <h5>click = hide4</h5>
+        <button>show</button>
+    </div>
+</body>
+</html>

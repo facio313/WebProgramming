@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+        <!-- 라이브러리 또는 외부파일의 위치 선정은 중요 -->
+    <!-- CDN 방식     -->
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+    <!-- 다운로드 방식 -->
+    <!-- <script src="../js/jquery-3.6.1.min.js"></script> -->
+
+    <script>
+        window.onload = function(){
+            alert(document.querySelector("h1").innerHTML);
+        }
+        // window.addEventListener("load", function(){});
+        // document.addEventListener("DOMContentLoaded", function(){});
+        $(document).ready(function(){
+            alert($('h1').html());
+        });
+    </script>
+</head>
+<body>
+    <h1>안녕하슈</h1>
+    <!-- 
+        script 소스코드 영역이 document 하단에 존재할 경우 
+    문서 준비를 위한 코드(document.ready(fn))는 필요 없음-->
+    
+</body>
+</html>
