@@ -5,27 +5,49 @@
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 <script>
-$(function(){
-    $('input:button').on('click', function(){
-        var hobby = "";
-        // 입력양식선택자:상태필드
-        $(':checkbox:checked').each(function(){
-            hobby += $(this).val();
+    $(function () {
+        $('input:button').on('click', function () {
+            var hobby = "";
+            // 입력양식선택자:상태필드
+            $(':checkbox:checked').each(function (i) {
+                if (i > 0) hobby += ", ";
+                hobby += $(this).val();
+            });
+            // if(hobby == "") return; // 값이 없을 때 하위 문장을 실행하지 않고 되돌려 보냄
+            if (hobby == "") hobby += "없다"; // 데이터 없음을 알림으로 
+            alert("너의 취미는 " + hobby);
         });
-        if(hobby == "") return // 값이 없을 때 하위 문장을 실행하지 않고 되돌려 보냄
-        alert("너의 취미는 " + hobby);
-
+        // $('select').on('change', function(){
+        $(':button').on('click', function () {
+            //단일속성 선택값
+            // $('#sel option:selected').val();    
+            //여러 개 선택값
+            var opt = "";
+            $('#sel option:selected').each(function () {
+                opt += $(this).val() + "\n";
+            });
+            alert($('h4').eq(1).html() + "\n" + opt);
+        });
     });
-});
 </script>
 </head>
 <body>
     <h4>취미 : </h4>
-    <input type="checkbox" id="악기" checked>악기
-    <input type="checkbox" id="게임" checked>게임
-    <input type="checkbox" id="수영">수영
-    <input type="checkbox" id="만화" checked>만화
-    <input type="checkbox" id="영화">영화
+    <input type="checkbox" value="악기" checked>악기
+    <input type="checkbox" value="게임" checked>게임
+    <input type="checkbox" value="수영">수영
+    <input type="checkbox" value="만화" checked>만화
+    <input type="checkbox" value="영화">영화
     <input type="button" value="선택">
+
+    <h4>봄소식 : </h4>
+    <select id="sel" multiple size="4">
+        <option>개나리</option>
+        <option selected>진달래</option>
+        <option>민들레</option>
+        <option>목련</option>
+        <option>왕벚꽃</option>
+    </select>
+    <button>선택</button>
 </body>
 </html>

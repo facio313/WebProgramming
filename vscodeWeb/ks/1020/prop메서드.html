@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $('#runBtn').on('click', function () {
+                var v_rst = "";
+                v_rst += "체크박스:" + $('#chk').prop('checked') + "<br>";
+                v_rst += "라디오버튼:" + $('#rdo').prop('checked') + "<br>";
+                v_rst += "콤보박스:" + $('#sel option').eq(2).prop('selected') + "<br>";
+                v_rst += "텍스트필드:" + $('#txt').prop('readonly') + "<br>";
+
+                $('#disp').html(v_rst);
+            });
+            
+            $('#chgBtn').on('click', function () {
+                v_chkt += $('#chk').prop('checked');
+                v_rdo += $('#rdo').prop('checked');
+                v_sel += $('#sel option').eq(2).prop('selected') + "<br>";
+                v_text += $('#txt').prop('readonly')
+                
+                //반대로 설정
+                $('#chk').prop('checked',!v_chk);
+                $('#rdo').prop('checked',!v_rdo);
+                $('#sel option').eq(2).prop('selected', !v_sel);
+                $('#txt').prop('readonly', !v_txt);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <form>
+        <input type="checkbox" id="chk" checked>
+        <input type="radio" id="rdo">
+        <select id="sel">
+            <option value=""></option>
+            <option value="1">일</option>
+            <option value="2" selected>이</option>
+            <option value="3">삼</option>
+        </select>
+        <input id="txt" value="가나다" readonly>
+        <input type="button" id="runBtn" value="실행-현재 상태값 출력">
+        <input type="button" id="chgBtn" value="변경-반대 상태로 변경">
+    </form>
+    <div id="disp"></div>
+</body>
+
+</html>

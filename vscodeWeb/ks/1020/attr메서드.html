@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <style>
+        img {
+            width: 50px;
+            height: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <h4>img 요소의 src 속성 중 파일명만 추출하여 title 속성값으로 설정</h4>
+    <div>
+        <img src="../images/1.jpg" alt="">
+        <img src="../images/2.jpg" alt="">
+        <img src="../images/3.jpg" alt="">
+        <img src="../images/4.jpg" alt="">
+        <img src="../images/5.jpg" alt="">
+    </div>
+    <script>
+        // get - 첫 번째 항목만 반환
+        console.log($('img').attr('src'));
+
+        // set - 모든 항목에 일괄 적용
+        $('img').attr('alt', '동일함');
+        $('img').attr('title', '똑같은 title');
+
+        //콜백함수 내부에서 반환하는 값으로 title속성을 적용하자
+        $('img').attr('title', function () {
+            //첫 번째 항목만 반환받기 때문에 함수 안에서 순차적으로 값을 받아 속성을 적용
+            var v_src = $(this).attr('src');
+            //이미지 파일명 추출
+            //substring(str, end) end는 포함되지 않음
+            var str = v_src.lastIndexOf("/") + 1;
+            var end = v_src.lastIndexOf(".");
+            var fname = v_src.substring(str, end);
+            return fname;
+        });
+        
+        //속성 제거
+        $('img').eq(3).removeAttr('title');
+        // $('img').eq(3).removeAttr('src');
+
+        //여러 가지 속성 설정
+        $('img').eq(3).attr({'src':'../images/1.jpg', 'title':'SPC불매운동'})
+    </script>
+</body>
+
+</html>
