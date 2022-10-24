@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <style>
+        div {
+            width: 80%;
+            height: 60vh;
+            background-color: black;
+            color: white;
+            /* text-align: center; 원하는 방식으로 정렬되지 않아서 Flex를 이용해서 정렬할 예정*/
+            display: flex;
+            justify-content: center; /* 메인축(x축)정렬 */
+            align-items: center;
+        }
+        span {
+            background-color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div><span>a</span></div>
+    <script>
+        $('div').on('mousedown', function(e){ // 매개변수(e)를 통해 이벤트 객체 사용(권고)
+            // event; // event keyword를 이용해서 이벤트 정보에 접근 가능 -> 매개변수(e)가 표준!
+            var str = "";
+            // str += "type:" + event.type + "<br>";
+            str += "type:" + e.type + "<br>";
+            str += "target:" + e.target + "<br>";
+            str += `target-name: ${e.target.nodeName}<br>`;
+            str += `target-value: ${e.target.firstChild.nodeValue}<br>`;
+            str += "pageX: " + e.pageX + "<br>";
+            str += "pageY: " + e.pageY + "<br>";
+            str += "screenX: " + e.screenX + "<br>";
+            str += "screenY: " + e.screenY + "<br>";
+            str += "button: " + e.button + "<br>";
+            $('div').html(str);
+
+        });
+
+        // $('div').on({event:fn, event:fn, event:fn});
+        $('div').on({
+            mouseenter:function(){
+                $(this).css('background-color', 'salmon');
+            }, 
+            mouseleave:function(){
+                $(this).css('background-color', 'purple');
+            },
+            dblclick:function(){
+                $(this).css('background-color', 'lime');
+            }
+        });
+    </script>
+</body>
+</html>

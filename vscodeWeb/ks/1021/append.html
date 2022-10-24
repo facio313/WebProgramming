@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+    <style>
+        p {
+            border: 1px solid green;
+            display: inline-block;
+        }
+        img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <h4>요소 정보를 활용해 이미지를 생성하고 추가하기</h4>
+    <p title="강">1</p> <br>
+    <p title="아">2</p> <br>
+    <p title="지">3</p> <br>
+    <p title="짱">4</p>
+    <script>
+        $('p').on('click', function () {
+            var v_txt = $(this).text();
+            var v_title = $(this).attr('title');
+
+            // JS 동적 이미지 생성1
+            var v_img = "<img src='../images/" + v_txt + ".jpg' alt='" + v_title + "'>";
+
+            // JS 동적 이미지 생성2
+            var v_img1 = document.createElement("img")
+            v_img1.src = "../images/" + v_txt + ".jpg"
+            v_img1.alt = v_title;
+
+            //append, appendTo 요소 내부 뒤쪽에 붙임
+            // $(this).append(v_img); //부모.append(자식)
+            // $(v_img).appendTo(this); // 자식.appendTo(부모)
+
+            // prepend, prependTo 요소 내부 앞쪽에 붙임
+            // $(this).prepend(v_i/mg);
+            // $(v_img).prependTo(this);
+
+            // after, insertAfter 요소 외부 뒤쪽에 붙임
+            // $(this).after(v_img);
+            // $(v_img).insertAfter(this);
+
+            // before, insertBefore 요소 외부 앞쪽에 붙임
+            // $(this).before(v_img);
+            // $(v_img).insertBefore(this);
+
+            // JQ 동적 이미지 생성1
+            var v_img2 = $(`<img src='../images/${v_txt}.jpg' alt='${v_title}'>`);
+            // v_img2.appendTo(this);
+
+            // JQ 동적 이미지 생성2
+            // $('<img>',{'src':'../images/' + v_txt + '.jpg', 'alt': v_title}).insertBefore(this);
+            $(this).after($('<img>',{'src':'../images/' + v_txt + '.jpg', 'alt': v_title}));
+        });
+    </script>
+</body>
+
+</html>

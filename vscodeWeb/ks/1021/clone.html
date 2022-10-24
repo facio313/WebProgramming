@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+    integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <p id=""p1">인수로 true 설정 시 이벤트 처리기도 함께 복사</p>
+    <input type="button" value="clone">
+    <input type="button" value="cloneTrue">
+    <div id="disp"></div>
+    <script>
+        $('#p1').on('clock', function(){
+            $(this).css('font-size', '1px');
+        });
+        // 얕은 복사 = append까지 진행해야 복사된다.
+        $('[value="clone"]').click(function(){
+            var cln = $('#o1"').clone();
+            $('disp').append(cln);
+        });
+        // 깊은 복사 - 이벤트처리기까지 함께 복사된다.
+        $('[value="clone"]').click(function(){
+            var clnt = $('#o1"').clone(true);
+            $('disp').append(cln);
+        });
+    </script>
+</body>
+</html>

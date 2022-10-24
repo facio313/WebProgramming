@@ -10,3 +10,17 @@
 9월 27, 2022 09:35:05.366 [15168:7392:0927/093505.366:ERROR:interface_endpoint_client.cc(689)] Message 1 rejected by interface blink.mojom.WidgetHost
 9월 27, 2022 09:54:38.434 [15168:7392:0927/095438.434:ERROR:interface_endpoint_client.cc(689)] Message 1 rejected by interface blink.mojom.WidgetHost
 9월 27, 2022 09:54:38.435 [15168:7392:0927/095438.434:ERROR:interface_endpoint_client.cc(689)] Message 1 rejected by interface blink.mojom.WidgetHost
+
+10월 20, 2022 19:13:37.732 NEW SESSION
+10월 20, 2022 19:13:37.732 [10712:14244:1020/191337.731:ERROR:device_event_log_impl.cc(214)] [19:13:37.732] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+10월 20, 2022 19:18:27.470 [10020:11488:1020/191827.470:ERROR:device_event_log_impl.cc(214)] [19:18:27.471] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+10월 20, 2022 19:19:25.380 [10020:9116:1020/191925.380:ERROR:util.cc(129)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+10월 20, 2022 19:26:08.861 [9496:9300:1020/192608.861:ERROR:device_event_log_impl.cc(214)] [19:26:08.861] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+10월 20, 2022 19:27:06.772 [9496:11776:1020/192706.771:ERROR:util.cc(129)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+10월 20, 2022 19:40:03.882 [1872:9940:1020/194003.882:ERROR:device_event_log_impl.cc(214)] [19:40:03.881] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+10월 20, 2022 19:41:01.772 [1872:3260:1020/194101.772:ERROR:util.cc(129)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+10월 20, 2022 19:55:47.429 [13416:7768:1020/195547.428:ERROR:device_event_log_impl.cc(214)] [19:55:47.429] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+10월 20, 2022 19:56:45.325 [13416:11056:1020/195645.325:ERROR:util.cc(129)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+10월 20, 2022 20:02:17.176 [10124:10300:1020/200217.175:ERROR:device_event_log_impl.cc(214)] [20:02:17.176] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+10월 20, 2022 20:02:49.648 [12188:9876:1020/200249.648:ERROR:device_event_log_impl.cc(214)] [20:02:49.648] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+10월 20, 2022 20:03:47.615 [12188:10356:1020/200347.615:ERROR:util.cc(129)] Can't create base directory: C:\Program Files\Google\GoogleUpdater

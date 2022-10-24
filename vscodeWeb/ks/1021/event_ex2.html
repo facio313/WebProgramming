@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <style>
+        img {
+            width: 100px;
+            height: 100px;
+        }
+        input:button {
+            display: none;
+        }
+        }
+    </style>
+</head>
+<body>
+    <img src="../images/1.jpg" data-src="../images/6.jpg">
+    <img src="../images/2.jpg" data-src="../images/7.jpg">
+    <img src="../images/3.jpg" data-src="../images/8.jpg">
+    <img src="../images/4.jpg" data-src="../images/1.jpg">
+    <img src="../images/5.jpg" data-src="../images/2.jpg">
+    <input type="button" value="보이기">
+    <script>
+        var v_src = "";
+        $('img').on({
+            mouseenter:function(){
+            v_src = $(this).attr('src'); // 원래 이미지
+            // var v_src2 = $(this).attr('data-src'); // 변경될 이미지 JS방식
+            var v_src2 = $(this).data('src'); // 변경될 이미지 jQuery방식
+            $(this).attr('src', v_src2);
+        }, 
+        mouseleave:function(){
+            $(this).attr('src', v_src);
+        },
+        dblclick:function(){
+            $(this).hide();
+            // 버튼 보이기
+            if($('img:visible').length < 1){
+                $('[value="보이기"]').show();
+            }
+        }
+    });
+    $('input[type=button]').on('click', function(){
+        $('img').show();
+        $(this).hide();
+    });
+
+    </script>
+</body>
+</html>

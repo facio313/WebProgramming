@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <style>
+        img {
+            width: 100px;
+            height: 100px;
+            margin: 2px;
+        }
+        div {
+            font-size: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="append">
+    <input type="button" value="prepend">
+    <div>
+        <img src="../images/1.jpg" alt="">
+        <img src="../images/2.jpg" alt="">
+        <img src="../images/3.jpg" alt="">
+        <img src="../images/4.jpg" alt="">
+        <img src="../images/5.jpg" alt="">
+    </div>
+
+    <script>
+        $('input:button').eq(0).on('click', function(){
+            $('img').first().appendTo($('div'))                                                                                                                 
+        });
+        $('input:button').eq(1).on('click', function(){
+            $('img').last().prependTo($('div'))
+        });
+    </script>
+</body>
+
+</html>
