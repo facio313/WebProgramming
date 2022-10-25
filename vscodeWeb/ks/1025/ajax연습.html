@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div id="disp"></div>
+    <input type="button" value="AJAX" onclick="f_ajax()">
+    <input type="button" value="CSV" onclick="f_csv()">
+    <input type="button" value="JSON" onclick="f_json()">
+    <input type="button" value="XML" onclick="f_xml()">
+    <script>
+        function f_ajax(){
+            //ajax 기본 문법 작성하기
+            var v_ajax = new XMLHttpRequest();
+            v_ajax.open("get", "dummy.txt", true);
+            // v_ajax.send();
+            v_ajax.onreadystatechange = function(){
+                if(v_ajax.readyState == 4 && v_ajax.status == 200){
+                    alert(v_ajax.responseText);
+                    // console.log(this.responseText);
+                }
+            }
+            // var v_ajax = new XMLHttpRequest();
+            // v_ajax.open("get", "dummy.txt", true);
+            // v_ajax.send();
+            // v_ajax.onreadystatechange = function(){
+            //     if(v_ajax.readyState == 4 && v_ajax.status == 200){
+            //         alert(v_ajax.responseText);
+            //     }
+            // }
+            // var v_ajax = new XMLHttpRequest();
+            // v_ajax.open("get", "dummy.txt", true);
+            // v_ajax.send();
+            // v_ajax.onreadystatechange = function(){
+            //     if(v_ajax.readyState == 4 && v_ajax.status == 200){
+            //         alert(v_ajax.responseText); 
+            //     }
+            // }
+            v_ajax.send();
+        }
+
+        function f_csv(){
+            //ajxa를 이용해 데이터를 받아오고 console.log로 데이터를 표현해봐요
+            var v_csv = new XMLHttpRequest();
+            v_csv.open("get", "test.csv", true);
+            // v_csv.send();
+            v_csv.onreadystatechange = function(){
+                // if(v_csv.readyState == 4 && v_csv.status == 200){
+                //     alert(v_csv.responseText);
+                // }
+                if(this.readyState == 4 && this.status == 200){
+                    f_test(v_csv.responseText);
+                }
+            }
+            v_csv.send()
+        }
+
+        // 값을 넘겨받아 table형식으로 출력하기
+        var v_disp = document.getElementById('disp');
+        function f_test(p_arg){
+            var v_lines = p_arg.split("\n"); // 줄넘김 기호(line feed)한 줄씩 데이터 분리
+            var v_tbl = "<table border=1>";
+            for(var i = 0; i <v_lines.length; i++){
+                var v_str = v_lines[i].split(",");
+                v_tbl += "<tr>";
+                // 분리된 내용을 cell공간(td)에 순차적으로 찍어주는데
+                for(var j = 0; j <v_str.length; j++){
+                    v_tbl += "<td>" + v_str[j] + "</td>";
+                }
+                v_tbl += "</tr>"
+            }
+            v_tbl += "</table>";
+            v_disp.innerHTML = v_tbl;
+        }
+
+        function f_json(){
+            var v_json = new XMLHttpRequest();
+            v_json.open("get", "test.json", true);
+            v_json.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    console.log(v_json.responseText);
+                    var jsonObj = JSON.parse(this.responseText);
+                    console.log(jsonObj); // 배열로 되어있음~!!!!
+                    f_test2(jsonObj);
+                }
+            }
+            v_json.send();
+        }
+
+        function f_test2(p_arg){
+            var v_tbl = "<table border=1>";
+
+            // object의 key정보를 테이블헤더로 표시하기
+            var v_vals = Object.values(p_arg);
+            var v_keys = Object.keys(v_vals[2]); // 테이블헤더 표시하기 위해서 인덱스 숫자는 상관 없음
+            v_tbl += `<tr><td>${v_keys[0]}</td><td>${v_keys[1]}</td><td>${v_keys[2]}</td>/</tr>`
+
+            // v_tbl += "<tr><td>이름</td><td>종류</td><td>별명</td></tr>";
+            for(var i = 0; i < p_arg.length; i++){
+                v_tbl += "<tr>";
+                v_tbl += "<td>" + p_arg[i].이름 + "</td>";
+                v_tbl += `<td>${p_arg[i].종류}</td>`;
+                v_tbl += `<td>${p_arg[i]["별명"]}</td>`;
+                v_tbl += "</tr>";
+            }
+            v_tbl += "</table>";
+            v_disp.innerHTML = v_tbl;
+        }
+
+        function f_xml(){
+            var v_xml = new XMLHttpRequest();
+            v_xml.open("get", "test.xml", true);
+            v_xml.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    // console.log(v_xml.responseText);
+                    f_test3(this.responseXML);
+                }
+            }
+            v_xml.send();
+        }
+
+        function f_test3(p_arg){
+            var friends = document.querySelectorAll("friend");
+
+            v_tbl = "<table border=1>";
+            v_tbl += "<tr><td>이름</td><td>TYPE</td><td>별명</td></tr>";
+                for(var i = 0; i < friends.length; i++){
+                    // 한 덩어리씩 나눈 후, 세부 정보를 변수에 담아야 함
+                    var children = friedns[i].children;
+                    for(var j = 0; j < children.length; j++){
+                        v_tbl = `<td>${children[j].innerHTML}</td>`;
+                    }
+                    v_tbl += "</tr>";
+                }
+            v_tbl += "/<table>";
+            v_disp.innerHTML = v_tbl;
+        }
+    </script>
+</body>
+</html>

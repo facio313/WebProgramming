@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <style>
+        img {
+            width: 300px;
+            /* 위치 조작을 위해 요소의 위치 속성값을 변경 (default : ) */
+            position: relative;
+        }
+        #d1 {
+            border: 3px solid yellow;
+            padding: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1">
+        <img src="../images/1.jpg" alt="">
+    </div>
+    <input type="button" id="toRight" value=">>">
+    <input type="button" id="toLeft" value="<<">
+
+    <hr>
+
+    <input type="button" value="확인" id="btn3">
+    <p id="p1">무궁화 꽃이 피었습니다 - CSS</p>
+    <p id="p2">무궁화 꽃이 피었습니다 - animate</p>
+    <script>
+        // effect
+        $('#d1').on('click', function(){
+            $('img').fadeToggle();
+        });
+
+        // animate
+        // 안쪽으로 이동하려는 속성은 +, 바깥쪽으로 이동하는 속성은 -적용
+        $('#toRight').on('click', function(){
+            // $('img').animate({left : '=+10px'}, 100);
+            $('img').animate({right : '-=10px'}, 100);
+        });
+
+        $('#toLeft').on('click', function(){
+            // $('img').animate({right : '=+10px'}, 100);
+            $('img').animate({left : '-=10px'}, 100);
+        });
+
+        $('#btn3').on('click', function(){
+            $('#p1').css('font-size', '+=2px');
+            $('#p2').animate({'font-size':'+=2px'}, 1000);
+        });
+    </script>
+</body>
+</html>
