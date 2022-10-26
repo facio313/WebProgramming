@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+    // namespace(바구니 같은 거, MyBatis에서도 사용함)
+    // 빈 객체를 이용한 namespace 생성하기
+    var kor = {};
+    kor.seoul = {};
+    kor.daejeon = {};
+    kor.seoul.ks = "서울 경수";
+    kor.daejeon.ks = "대전 경수";
+
+    // javascript, 식별자에서 유일하게 사용 가능한 특수 문자 2개 ( _ , $ )
+
+    var $ = {}; // namespace용 빈 객체 생성(자바의 package에 해당)
+    $.ajax = function(p_set){
+        // ajax 기본 구문
+        var v_ajax = new XMLHttpRequest();
+        v_ajax.open(p_set.moethod, p_set.url, true);
+        v_ajax.onreadystatechange = function(){
+            if (this.readyState == 4 && this.status == 200){
+                p_set.success(v_ajax.responseText);
+            }
+        }
+        v_ajax.send();
+    }
+
+    // 생성된 ajax 메서드를 호출하기
+   $.ajax({
+    // key 이름은 바껴도 상관 없음. 잘 넣어주기만 하면 됨
+    moethod : 'get',
+    url : '../1025/dummy.txt',
+    success : function(p_rst){
+        alert(p_rst);
+    }
+   });
+</script>

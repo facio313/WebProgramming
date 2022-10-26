@@ -124,13 +124,15 @@
         }
 
         function f_test3(p_arg){
-            var friends = document.querySelectorAll("friend");
+            // var friends = document.querySelectorAll("friend"); document에는 friend가 없다
+            var friends = p_arg.querySelectorAll("friend");
 
-            v_tbl = "<table border=1>";
+            var v_tbl = "<table border=1>";
             v_tbl += "<tr><td>이름</td><td>TYPE</td><td>별명</td></tr>";
                 for(var i = 0; i < friends.length; i++){
                     // 한 덩어리씩 나눈 후, 세부 정보를 변수에 담아야 함
                     var children = friedns[i].children;
+                    v_tbl += "<tr>";
                     for(var j = 0; j < children.length; j++){
                         v_tbl = `<td>${children[j].innerHTML}</td>`;
                     }

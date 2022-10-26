@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<input type="text" name="poli" value="폴리">
+	<input type="button" value="get" onclick="f_getAjax()">
+	<input type="button" value="post" onclick="f_postAjax()">
+	<div id="disp"></div>
+	<script>
+		var v_val = document.querySelector('input[name=poli]').value;
+		var v_disp = document.querySelector('#disp');
+		function f_getAjax() {
+			// ajax 기본 구문
+			var v_get = new XMLHttpRequest();
+			/* v_get.open("get", "ajax_get.jsp?이름은 뭘로 해도 상관 없다 하지만 키라서 중요함=" + v_val, true);
+			jsp로 전달할 때는 그렇지만 form으로 전달할 때는 위 input의 name으로 들어가야 한다.*/
+//			v_get.open("get", "ajax_get.jsp?dataNm=" + v_val, true);
+//			v_get.open("get", "/contextroot/urlmapping", true); // Servlet 사용하기 위한 form.
+//			v_get.open("get", "/urlmapping", true);
+			v_get.open("get", "/webPro/Ajax?aaa=" + v_val, true); // 원래 프로젝트 이름이지만 contextroot를 그냥 씀(/ 이걸로) / properties에서 보거나 Servers폴더에서 server.xml 밑에 경로 보기
+			v_get.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					//alert(v_get.responseText);
+					v_disp.innerHTML = v_get.responseText;
+				}
+			}
+			v_get.send();
+		}
+
+		function f_postAjax() {
+			var v_post = new XMLHttpRequest();
+//			v_post.open("post", "ajax_get.jsp", true);
+			v_post.open("post", "/webPro/Ajax", true);
+			v_post.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					console.log(v_post.responseText); //json object(문자열 데이터) 전달받음
+					console.log(JSON.parse(v_post.responseText));
+					var data = JSON.parse(v_post.responseText);
+					v_disp.innerHTML = `<h4 style='color:red'>robotcar ${data.key}</h4>`;
+				}
+			}
+			// post방식으로 데이터를 넘겨줄 때 꼭 requestHeader속성을 설정한다!!
+			// content-type: http통신에서 전송되는 데이터의 타입을 나타내는 헤더정보
+			v_post.setRequestHeader("content-type", "application/x-www-form-urlencoded;charset=utf-8");
+			v_post.send("key="+ v_val); // post는 data를 sned 메서드에 담아서 전달
+		}
+	</script>
+</body>
+</html>

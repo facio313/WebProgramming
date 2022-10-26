@@ -24,3 +24,17 @@
 10월 20, 2022 20:02:17.176 [10124:10300:1020/200217.175:ERROR:device_event_log_impl.cc(214)] [20:02:17.176] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
 10월 20, 2022 20:02:49.648 [12188:9876:1020/200249.648:ERROR:device_event_log_impl.cc(214)] [20:02:49.648] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
 10월 20, 2022 20:03:47.615 [12188:10356:1020/200347.615:ERROR:util.cc(129)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+
+10월 26, 2022 10:44:01.595 NEW SESSION
+10월 26, 2022 10:44:01.595 [8268:1900:1026/104401.594:ERROR:device_event_log_impl.cc(214)] [10:44:01.594] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+10월 26, 2022 10:44:59.458 [8268:7744:1026/104459.458:ERROR:util.cc(129)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+
+10월 26, 2022 11:06:46.719 NEW SESSION
+10월 26, 2022 11:06:46.719 [13572:11700:1026/110646.718:ERROR:device_event_log_impl.cc(214)] [11:06:46.717] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+10월 26, 2022 11:07:54.705 [15764:17868:1026/110754.705:ERROR:device_event_log_impl.cc(214)] [11:07:54.705] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+10월 26, 2022 11:08:52.629 [15764:15332:1026/110852.629:ERROR:util.cc(129)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+10월 26, 2022 12:02:27.765 [15764:17844:1026/120227.765:ERROR:cert_verify_proc_builtin.cc(670)] CertVerifyProcBuiltin for www.park-ave.co.kr failed:
+10월 26, 2022 12:02:27.765 ----- Certificate i=0 (O=My Company Ltd,L=Newbury,ST=Berkshire,C=GB) -----
+10월 26, 2022 12:02:27.766 ERROR: No matching issuer found
+10월 26, 2022 12:02:27.766 
+10월 26, 2022 12:02:27.766 

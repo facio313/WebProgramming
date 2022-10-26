@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+<script>
+    $.ajax({
+        type : 'get', // method라는 속성으로도 접근 가능
+        url : '../1025/test.json',
+        // data : '', // 넘길 데이터 없을 경우 생략 가능
+        success : function(a){ // 성공 시 매개 변수를 통해 응답 데이터가 전달됨
+            console.log("결과 데이터 : ", a);
+        },
+        error : function(xhr){
+            alert(xhr.status); // 에러 발생 시 객체를 통해 에러코드 확인 가능
+        },
+        dataType: 'json' // JS 객체 형태로 자동 변환해줌
+    });
+
+    // 단축메뉴 - 속성에 대한 값만 대입해서 결과를 빠르게 얻을 수 있음
+    // error 상태를 확인할 수 없기 때문에 익숙해지고 나서 사용할 것을 권장
+    // $.get(url, data, success, dataType);
+    // $.post(url, data, success, dataType);
+    // $.getJSON(url, data, success, dataType);
+    /*
+    $.get(
+        '../1025/test.json',
+        function(a){
+            console.log("여기 다시 찍어봐 : ", a);
+        },
+        'json');
+    */
+</script>
