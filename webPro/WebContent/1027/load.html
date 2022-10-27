@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div {
+	border: 1px solid black;
+	width: 20%;
+	height: 20vh;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<input id="userId">
+	<input type="password" id="userPw">
+	<button>버튼</button>
+	
+	<div id="d1"></div>
+	<div id="d2"></div>
+	<div id="d3"></div>
+	
+	
+	<script>
+	// 여기에 이걸 놔두면 처음 html파일이 로딩됐을 때 id랑 pw가 아무 것도 없는 상태로 있어서 그것이 대입됨
+	// 그래서 밑에 두 줄을 button 안으로 넣어야 함. id랑 pw를 넣고 button을 클릭했을 때 id pw가 갱신되서 인식 되기 때문
+	// 즉 위에서 밑으로 읽는 방향성 때문에 button 밑으로 옮기지 않으면 button을 눌렀을 때 false가 뜸
+/* 	let uId = document.querySelector('#userId').value; // JS 방식
+	let uPw = $('#userPw').val(); // jQuery 방식 */
+		
+	//load() : 서버로부터 응답받은 데이터를 선택한 html요소 컨텐츠로 대체
+	// 서버와 통신하여 데이터를 가져오는 메서드로 ajax()보다 간소화된 비동기 호출 메서드
+	// $(selector).load(url, data-서버로 전송할, callback-작업완료 후 수행할 내용)
+	 // 하나 이상의 데이터를 전달할 때 {key:value, ...} *key랑 위 id 등이랑은 상관 없음
+	$('button').click(function(){
+		let uId = document.querySelector('#userId').value; // JS 방식
+		let uPw = $('#userPw').val(); // jQuery 방식
+		$('#d1').load("loadTest.jsp", {"userId":uId, "userPw":uPw}, f_cb);
+	});
+	 
+	 // response, status, xhr
+	 function f_cb(response, status, xhr){
+		 // 첫 번째 매개변수 - response를 통해 결과(응답 데이터) 표시
+		 $('#d2').html("<p style='color:green'>로그인" + JSON.parse(response).rst + "</p>"); // 결과(응답 데이터) 표시
+		 // status = 상태코드를 문자로 확인, xhr객체의 속성으로 정보 확인 가능
+		 alert(status + xhr.status);
+	 }
+	 
+	 // CORS : Cross Origin Resource Sharing
+	 $('#d3').load("www.naver.com", function(a, b, c){
+		 alert("상태 : " + c.status);
+	 });
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function jsonFlickrFeed(p_data){
+            console.log(p_data);
+            var objArr = p_data.items;
+            for(var i = 0; i < objArr.length; i++){
+                console.log(objArr[i].media.m);
+                var v_img = document.createElement('img');
+                v_img.src = objArr[i].media.m;
+                document.querySelector('body').append(v_img);
+            }
+        }
+        </script>
+        <!-- 
+        JSONP(JavaScript Object Notation Padding)
+        <script>태그를 이용한 꼼수로서 json데이터를 가져오기 위한 일종의 편법
+        <script>태그를 통해 외부에서 가져오는 리소스는 sop정책에 적용 대상이 아닌 점을 이용한 방법
+        -->
+        <script src="https://www.flickr.com/services/feeds/photos_public.gne?tags=yunakim&format=json"></script>
+</body>
+</html>

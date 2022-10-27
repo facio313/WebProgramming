@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!--
+        SOP(Same-origin Policys, 동일 출처 정책) -> 브라우저 보안 정책
+        protocol + port + host가 모두 동일한 출처일 떄 same origin
+        다른 origin(=cross origin)에서의 리소스와 상호작용할 수 없게 제한하는 정책
+        나의 origin에서만 리소스를 활용하므로 공격 가능성을 줄이는 효과
+
+        CORS(Cross Origin Resource Sharing, 교차 출처 리소스 공유 정책)
+        다른 출처에서의 리소스 활용을 위해 대응하는 방식이 많이 존재
+
+        그 중 아래와 같은 방식으로 교차출처에서 리소스를 가져와 활용할 수 있도록 할 예정..
+         - jsonp
+         - proxy서버활용
+         - 서버우회
+    -->
+
+</head>
+<body>
+    <input type="button" value="뉴스 가져오기" onclick="f_news()">
+    <script>
+        function f_news(){
+            var req = new XMLHttpRequest();
+            req.open('get', 'https://www.boannews.com/media/view.asp?idx=108678', true);
+            req.onreadystatechange = function(){
+                if(req.readyState == 4 && req.status == 200){
+                    console.log(req.responseText);
+                }
+            }
+            req.send();
+        }
+    </script>
+</body>
+</html>
