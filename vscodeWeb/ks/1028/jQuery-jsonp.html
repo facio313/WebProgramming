@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $.ajax({
+        url: 'https://www.flickr.com/services/feeds/photos_public.gne?tags=yunakim&format=json',
+        dataType: 'jsonp',
+        jsonpCallback: 'jsonFlickrFeed',
+        success: function(aa){
+            // console.log(aa);
+            $.each(aa.items, function(){
+                console.log(this.media.m);
+                $('<img>', {
+                    'src' : this.media.m,
+                    'alt' : 'flickr 무료 이미지'
+                }).appendTo('body');
+            });
+        },
+        error: function(chr){
+            alert("상태 : " + xhr.status)
+        }
+    });
+</script>

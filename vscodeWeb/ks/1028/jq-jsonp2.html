@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<body>
+    <div></div> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $.ajax({
+        url: 'jsonp.json', //  서버로서 요청 데이터를 주는 곳이다라고 치부하기
+        dataType: 'jsonp',
+        jsonpCallback: 'myCallback',
+        success: function(aa){
+        //    console.log(aa);
+            $.each(aa.body, function(i){
+                // console.log(this.BSSH_NM);
+                $('div').append(aa.body[i]["BSSH_NM"] + "<br>");
+            });
+        },
+        error: function(xhr){
+            alert("상태 : " + xhr.status);
+        }
+    });
+</script>
+</body>
+</html>
