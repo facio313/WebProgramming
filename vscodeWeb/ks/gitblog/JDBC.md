@@ -1,0 +1,92 @@
+---
+layout: post
+title: JDBC
+description: 자바와 데이터베이스를 어덯게 연결하는지 알아보자
+date: 2022-10-10
+published: true
+categories: Java
+tags: [자바, JDBC, Database, Oracle]
+---
+
+---초급자바 버전---
+
+
+
+0. 드라이버 추가
+   - 자바 프로젝트 파일에 Oracle 드라이버(jar)를 추가한다.
+1. 드라이버 로딩
+    try {
+    Class.forName("oracle.jdbc.driver.OracleDriver");
+    - Reflection 사용
+      - forName은 클래스 객체를 갖고오는 메서드
+    - 자바와 오라클은 완전히 다른 시스템이기 때문에 드라이버를 불러와야 한다.
+      - 매번 할 필요는 없고 한 번만 하면 된다.(static block)
+	} catch (ClassNotFoundException e) {
+	    e.printStackTrace();
+	}
+2. DB 접속
+    Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "아이디", "패스워드");
+    - 서버 주소(localhost나 아이피 주소)와 아이디, 패스워드가 있어야 한다.
+    - 호스트이름 : 포트번호 : SID(Service ID)
+3. DB에 요청할 쿼리 작성
+    Statement stmt = conn.createStatement();
+    String sql = "";
+    sql += " 쿼리문 ";
+    sql += " 쿼리문 ";
+    - String vs StringBuilder vs StringBuffeer
+      - String은 sql문이 많아질 때 성능이 떨어질 수  있다.
+      - StringBuilder은 ArrayList형태 -> 현업에서 많이 사용한다.
+      - StringBuffer은 Vector형태 -> 스레드가 안전하지만 느리다.
+    - ""에서 맨 앞이나 뒤에 한 칸씩 공백을 주어야 함
+    - alt shift a 활용
+4. 쿼리 실행
+    ResultSet resultSet = statement.executeQuery(sql);
+    - executeQuery : SELECT -> 결과 집합(ResultSet)을 반환한다.
+    - executeUpdate : INSERT, UPDATE, DELETE -> int  타입으로 실행된 개수를 반환한다. 
+5. 실행 결과 받기
+     while (resultSet.next()) {
+        타입 변수명 = ResultSet.get타입("컬럼명");
+        타입 변수명 = ResultSet.get타입("컬럼명");
+		System.out.printf("%s \t %s \t", 변수명...);
+     }
+6. 접속 종료(자원 반납)
+    resultSet.close();
+	statement.close();
+	connection.close();
+
+예시)
+    try {
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    }
+
+    Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "in91", "java"); 
+
+    Statement statement = connection.createStatement();
+    String sql = "";
+    sql += " SELECT";
+    sql += "     mem_id,";
+    sql += "     mem_name,";
+    sql += "     mem_hp,";
+    sql += "     mem_mail"; 
+    sql += " FROM";
+    sql += "     member";
+
+    ResultSet resultSet = statement.executeQuery(sql);
+
+    while (resultSet.next()) {
+        String memId = resultSet.getString(/*컬럼명*/"mem_id");
+        String memName = resultSet.getString("mem_Name");
+        String memHp = resultSet.getString("mem_Hp");
+        String memMail = resultSet.getString("mem_Mail");
+        System.out.printf("%s \t %s \t %s \t %s\n", memId, memName, memHp, memMail);
+    }
+
+    resultSet.close();
+    statement.close();
+    connection.close();
+
+
+
+---고급 자바 버전---
