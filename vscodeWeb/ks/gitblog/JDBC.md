@@ -10,8 +10,6 @@ tags: [자바, JDBC, Database, Oracle]
 
 ---초급자바 버전---
 
-
-
 0. 드라이버 추가
    - 자바 프로젝트 파일에 Oracle 드라이버(jar)를 추가한다.
 1. 드라이버 로딩
@@ -53,6 +51,23 @@ tags: [자바, JDBC, Database, Oracle]
     resultSet.close();
 	statement.close();
 	connection.close();
+형식)
+    try {
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    }
+    Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@아이피 주소:포트 번호:xe", "아이디", "비밀번호"); 
+    Statement statement = connection.createStatement();
+    String sql = "";
+    ResultSet resultSet = statement.executeQuery(sql);
+    while (resultSet.next()) {
+        String 변수명 = resultSet.getString("컬럼명");
+        System.out.printf("%s, 변수명); // 출력
+    }
+    resultSet.close();
+    statement.close();
+    connection.close();
 
 예시)
     try {
@@ -90,3 +105,8 @@ tags: [자바, JDBC, Database, Oracle]
 
 
 ---고급 자바 버전---
+
+0. 오라클 Driver 설정
+   - JDBC 코딩이란 Connection, Statement, PreaparedStatement, Resultset를 쓰는 것이다.
+1. Connection 객체 새이성
+2. Statement, PreparedStatement 객체 생성 - 쿼리 작성

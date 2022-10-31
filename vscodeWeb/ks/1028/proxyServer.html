@@ -3,6 +3,7 @@
 <body>
     <div></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.min.js"></script>
     <script>
         // proxy server를 통한 우회 방식
         // 브라우저와 서버 간 통신을 가능하게 만드는 중계서버
@@ -13,28 +14,35 @@
         $.ajax({
             // get방식으로 접근 시 querystring을 통해 속성 정보를 전달하고 그
             // 중  serviceKey는 개인정보이므로 인코딩(암호화)된 형태로 전달한다
-            url: 'https://apis.data.go.kr/6300000/eventDataService/eventDataListJson',
-            data: {
-                // decoding(복호화) 인증key 사용
-                'serviceKey' : 'JTpWDYFZS7u8AmLXQMOhVuqZlifrhgH3cRVd3TFMS/5nbdB6vETWKc89Z2GaffqsdMfGRXULro/5tiq7SVWdzg==', // decodeing key
-                'pageNo' : '2',
-                'numOfRows' : '20'
-            },
-            dataType: 'json',
+            // url: 'https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko',
+            url: 'http://cors-anywhere.herokuapp.com/https://news.google.com/rss?hl=ko&gl=KR&ceid=KR:ko',
+            // data: {
+            //     // decoding(복호화) 인증key 사용
+            //     'serviceKey' : 'JTpWDYFZS7u8AmLXQMOhVuqZlifrhgH3cRVd3TFMS/5nbdB6vETWKc89Z2GaffqsdMfGRXULro/5tiq7SVWdzg==', // decodeing key
+            //     'pageNo' : '2',
+            //     'numOfRows' : '20'
+            // },
+            // dataType: 'json',
+            dataType: 'text',
             success: function(a){
-                console.log(a);
-                $.each(a.msgBody, function(i){
-                    // $('div').append(a.msgBody.title + "<br>");
-                    $('div').append(this.title + "<br>");
-                    // $('div').append(a.msgBody[i].placeCdNm + "<br>");
-                    $('div').append(this.placeCdNm + "<br>");
-            });
+                // console.log(a);
+                var x2j = new X2JS()
+                var data = x2j.xml_str2json(a);
+                console.log(data);
+                // $.each(a.msgBody, function(i){
+                //     // $('div').append(a.msgBody.title + "<br>");
+                //     $('div').append(this.title + "<br>");
+                //     // $('div').append(a.msgBody[i].placeCdNm + "<br>");
+                //     $('div').append(this.placeCdNm + "<br>");
+                // });
             },
             error: function(xhr){
                 alert(xhr.status);
             }
         })
     </script>
+    <!-- http://cors-anywhere.herokuapp.com/corsdemo 여기 들어가서 버튼 누르기-->
+    <!-- 403 forbidden : 서버에 클라이언트의 요청이 도달, but 접근 거절 -->
 <!--
 End Point
 https://apis.data.go.kr/6300000/eventDataService/eventDataListJson

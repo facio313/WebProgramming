@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
+        integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div style="width: 600px; height: 800vh">
+        <!-- <canvas id="myChart" width="400" height="400"></canvas>  -->
+        <!-- 부모가 가진 넓이 높이로 표현해야 됨. 자체로는 안 됨.(왜?)-->
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <!-- <canvas>는 그래픽용
+            브라우저 기반 게임회사 또는 예쁜 웹 컴포넌트를 만드는 회사에서 주로 사용
+            일반적인 우베 개발자는 거의 사용하지 않음  -->
+    <script src="/js/random.js">
+        const ctx = document.getElementById('myChart').getContext('2d');// getContext(): 드로잉 컨텍스트에 액세스
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['캠벨얼리', '거봉', '샤인머스캣', '기타'],
+                datasets: [{
+                    type: 'bar',
+                    label: '#2016',
+                    data: [12, 19, 3, 5],
+                    backgroundColor: f_color(4),
+                    borderColor: f_color(4),
+                    borderWidth: 1
+                },{
+                    type: 'line', // bar랑 line만 공존 가능함
+                    label: '#2021',
+                    data: [36.6, 21.0, 31.6, 10.5],
+                    backgroundColor: f_color(4),
+                    borderColor: f_color(4),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        function f_ranAlpha(){
+            return parseFloat("0." + Math.floor(Math.random()*9));
+        }
+
+        function f_ran256(){
+            // return parseInt(Math.random()*256);
+            return Math.floor(Math.random()*256);
+        }
+
+        function f_color(p_arg){ // 생성할 랜덤항목의 수를 받아서 만듦
+            var v_colors = [];
+            var v_colorStr = "";
+            // rgba(255, 0, 255, 1) 형태의 데이터를 p_arg 개수만큼 배열에 담아야 함
+            for(var i = 0; i < p_arg; i++){
+                v_colorStr = "rgba(" 
+                + f_ran256() 
+                + "," 
+                + f_ran256() 
+                + "," 
+                + f_ran256() 
+                + "," 
+                + f_ranAlpha() 
+                + ")";
+                
+                v_colors.push(v_colorStr);
+            }
+            return v_color; // 배열 데이터
+        }
+    </script>
+
+    <!-- chart.js, d3.js, c3.js -->
+</body>
+
+</html>
