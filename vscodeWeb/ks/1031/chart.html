@@ -53,6 +53,14 @@
             }
         });
 
+// chart.js의 장점 = 구조대로 접근 가능함
+console.log(myChart.data.labels);
+console.log(myChart.data.datasets);
+console.log(myChart.data.datasets[1].type);
+myChart.data.datasets[1].type = "bar";
+myChart.update(); // 변경된 정보를 업데이트 해야 화면에 표현됨.
+//chart.js에서 가장 중요
+
         function f_ranAlpha(){
             return parseFloat("0." + Math.floor(Math.random()*9));
         }
@@ -67,22 +75,13 @@
             var v_colorStr = "";
             // rgba(255, 0, 255, 1) 형태의 데이터를 p_arg 개수만큼 배열에 담아야 함
             for(var i = 0; i < p_arg; i++){
-                v_colorStr = "rgba(" 
-                + f_ran256() 
-                + "," 
-                + f_ran256() 
-                + "," 
-                + f_ran256() 
-                + "," 
-                + f_ranAlpha() 
-                + ")";
-                
+                v_colorStr = "rgba(" + f_ran256() + "," + f_ran256() + "," 
+                + f_ran256() + "," + f_ranAlpha() + ")";
                 v_colors.push(v_colorStr);
             }
-            return v_color; // 배열 데이터
+            return v_colors; // 배열 데이터
         }
     </script>
-
     <!-- chart.js, d3.js, c3.js -->
 </body>
 
