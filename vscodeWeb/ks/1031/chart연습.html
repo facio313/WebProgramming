@@ -7,6 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
         integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -17,19 +18,31 @@
     <input class="button" type="button" value="AJAX DATA" onclick="f_update2()">
 
     <script>
+        var alreadyAjax = false;
+
+        // function f_proxyUpdate(){
+        //     if(!exist){
+        //         f_update2();
+        //         exist = true;
+        //     }
+        // }
+
         // AJAX로 데이터를 불러와 적용합니다.
         function f_update2() {
-            // json 데이터를 가져와서 콘솔에 찍어보기
-            var req = new XMLHttpRequest();
-            req.open('get', 'testData.json', true);
-            req.onreadystatechange = function () {
-                if (req.readyState == 4 && req.status == 200) {
-                    // console.log(req.responseText);
-                    var v_rst = JSON.parse(req.responseText); // json object => js object
-                    f_updateChart(v_rst);
+            if(!alreadyAjax){
+                // json 데이터를 가져와서 콘솔에 찍어보기
+                var req = new XMLHttpRequest();
+                req.open('get', 'testData.json', true);
+                req.onreadystatechange = function () {
+                    if (req.readyState == 4 && req.status == 200) {
+                        // console.log(req.responseText);
+                        var v_rst = JSON.parse(req.responseText); // json object => js object
+                        f_updateChart(v_rst);
+                    }
                 }
+                req.send();
+                alreadyAjax = true;
             }
-            req.send();
         }
 
         function f_updateChart(p_arg) {
@@ -40,29 +53,33 @@
             myChart.data.datasets[0].data = p_arg.score;
             myChart.update(); // 데이터 랜더링
         }
+
         // 차트의 데이터 및 타입을 업데이트 합니다.
         function f_update() {
-            var v_data1 = [];
-            var v_data2 = [];
-
-            for (var i = 1; i <= 4; i++) {
-                // Math.ceil(Math.random()*100); // 정수처리
-                var v_ranVal = Math.floor(Math.random() * 100); // 정수처리
-                v_data1.push(v_ranVal);
-                v_ranVal = Math.floor(Math.random() * 100);
-                v_data2.push(v_ranVal);
-
+            if(!alreadyAjax){
+                var v_data1 = [];
+                var v_data2 = [];
+    
+                for (var i = 1; i <= 4; i++) {
+                    // Math.ceil(Math.random()*100); // 정수처리
+                    var v_ranVal = Math.floor(Math.random() * 100); // 정수처리
+                    v_data1.push(v_ranVal);
+                    v_ranVal = Math.floor(Math.random() * 100);
+                    v_data2.push(v_ranVal);
+    
+                }
+                myChart.data.datasets[0].data = v_data1;
+                myChart.data.datasets[1].data = v_data2;
+    
+                var v_type = ["bar", "line", "pie", "radar", "doughnut"];
+                var v_ranSu = parseInt(Math.random() * v_type.length);
+                // myChart.data.datasets[1].type = "bar";
+                myChart.data.datasets[0].type = v_type[v_ranSu];
+                myChart.data.datasets[1].type = v_type[v_ranSu];
+                myChart.update();
+            } else {
+                window.location.reload();
             }
-            myChart.data.datasets[0].data = v_data1;
-            myChart.data.datasets[1].data = v_data2;
-
-            var v_type = ["bar", "line", "pie", "radar", "doughnut"];
-            var v_ranSu = parseInt(Math.random() * v_type.length);
-            // myChart.data.datasets[1].type = "bar";
-            myChart.data.datasets[0].type = v_type[v_ranSu];
-            myChart.data.datasets[1].type = v_type[v_ranSu];
-            myChart.update();
-
         }
 
         const ctx = document.getElementById('myChart').getContext('2d');
@@ -113,6 +130,8 @@
             }
             return v_colors;
         }
+
+
     </script>
 </body>
 
