@@ -26,7 +26,8 @@
         <li><a href="#">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="<%=request.getContextPath()%>/site/login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="/webPro/site/"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+<!--         경우에 따라서 servlet으로 집입해서 session을 지우고 페이지 이동시켜야 할 때도 있음  -->
       </ul>
     </div>
   </div>

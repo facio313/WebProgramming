@@ -22,6 +22,7 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="joinCod"/>
 			<item value="&quot;/adminlte3"/>
 			<item value="href=&quot;/adminlte3/"/>
 			<item value="src=&quot;/adminlte3/"/>
@@ -36,7 +37,6 @@
 			<item value="&lt;!-- Navbar --&gt;"/>
 			<item value="src=&quot;plugins"/>
 			<item value="plugin"/>
-			<item value="dist"/>
 		</list>
 		<list key="replacehistory">
 			<item value="&quot;../daminlte3"/>
