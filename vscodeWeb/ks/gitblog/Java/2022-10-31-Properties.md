@@ -15,7 +15,7 @@ tags: [properties, 환경설정]
 
 ***
 
-# 작성 예시
+## 작성 예시
 원래는 영어, 숫자, 특수문자.....만 됨
 properties 문서는 'key값=value값'형식으로 작성합니다.
 이 문서는 JDBC에서 사용할 DB접속정보를 저장한 문서입니다.
@@ -27,9 +27,7 @@ password=java
 greeting=hello
 ```
 
-***
-
-# 사용 순서
+## 사용 순서
 1. 읽어온 정보를 저장할 Properties 객체를 생성한다.
 2. 읽어올 파일명을 이용한 File 객체를 생성한다.
 3. 파일 읽기를 수행할 FileInputStream 객체를 생성한다.
@@ -39,7 +37,7 @@ greeting=hello
    
 ***
 
-# 예시
+## 예시
 ```
     Properties **prop** = new Properties();
     File file = new File("res/db.properties");

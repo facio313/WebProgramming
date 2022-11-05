@@ -29,4 +29,9 @@ public class Join extends HttpServlet {
 		RequestDispatcher disp = request.getRequestDispatcher("site/index.jsp");
 		disp.forward(request, response);
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
 }

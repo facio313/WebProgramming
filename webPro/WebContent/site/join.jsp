@@ -15,12 +15,13 @@
 	<div class="col-sm-8">
 	  <h4>회원가입</h4>
 	  <hr>
-	  <form class="form-horizontal" method="post" onsubmit="return false;">
+	  <form class="form-horizontal" method="post" onsubmit="return valid();">
 	    <div class="form-group">
 	      <label for="id" class="control-label col-sm-2">아이디</label>
 	      <span class="sp"></span>
+		<%-- 시작 문자는 개수 범위에 포함되지 않음 --%>
 	      <div class="col-sm-4">
-	        <input type="text" class="form-control" id="id" placeholder="Enter id" name="mem_id">
+	        <input type="text" class="form-control" id="id" placeholder="Enter id" name="mem_id" required pattern="[a-zA-Z][a-zA-Z0-9]{3,7}">
 	      </div>
 	      <div class="col-sm-6" style="text-align: left;">
             <button type="button" class="btn btn-success btn-sm" id="idChk">중복검사</button>
@@ -30,8 +31,9 @@
 	    
 	    <div class="form-group">
 	      <label for="pass" class="control-label col-sm-2">비밀번호</label>
+<%-- 	      임의문자(.)를 대상으로 최소 개수(*?) --%>
 	      <div class="col-sm-4">
-	        <input type="password" class="form-control" id="pass" name="mem_pass">
+	        <input type="password" class="form-control" id="pass" name="mem_pass" required pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*()_+|★]).{8,12}">
 	      </div>
 	    </div>
 	    
@@ -39,14 +41,14 @@
 	      <label for="name" class="control-label col-sm-2">이름</label>
 	      <span class="sp"></span>
 	      <div class="col-sm-4">
-	        <input type="text" class="form-control" id="name" name="mem_name">
+	        <input type="text" class="form-control" id="name" name="mem_name" required>
 	      </div>
 	    </div>
 	    
 	    <div class="form-group">
 	      <label for="bir" class="control-label col-sm-2">생년월일</label>
 	      <div class="col-sm-4">
-	        <input type="date" class="form-control" id="bir" name="mem_bir">
+	        <input type="date" class="form-control" id="bir" name="mem_bir" required>
 	        <span class="sp"></span>
 	      </div>
 	    </div>
@@ -54,7 +56,7 @@
 	    <div class="form-group">
 	      <label for="hp" class="control-label col-sm-2">연락처</label>
 	      <div class="col-sm-4">
-	        <input type="text" class="form-control" id="hp" name="mem_hp" placeholder="010-0000-0000">
+	        <input type="text" class="form-control" id="hp" name="mem_hp" placeholder="010-0000-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}">
 	      </div>
 	      <span class="sp"></span>
 	    </div>
@@ -62,7 +64,8 @@
 	    <div class="form-group">
 	      <label for="mail" class="control-label col-sm-2">이메일</label>
 	      <div class="col-sm-4">
-	        <input type="email" class="form-control" id="mail" name="mem_mail">
+<%-- 	      1004angel@a.co.kr --%>
+	        <input type="email" class="form-control" id="mail" name="mem_mail" pattern="[0-9a-zA-Z]+@[0-9a-zA-Z]+(\.[a-z]+){1,2}">
 	      </div>
 	      <span class="sp"></span>
 	    </div>
@@ -70,7 +73,7 @@
 	    <div class="form-group">
 	      <label for="add1" class="control-label col-sm-2">우편번호</label>
 	      <div class="col-sm-4">
-	        <input type="text" class="form-control" id="postAddr" name="mem_add1">
+	        <input type="text" class="form-control" id="postAddr" name="mem_zip" required>
 	      </div>
 	      <div class="col-sm-2">
 	        <button type="button" id="addrBtn" class="btn btn-info btn-sm">주소검색</button>
@@ -80,14 +83,14 @@
 	    <div class="form-group">
 	      <label for="add1" class="control-label col-sm-2">주소</label>
 	      <div class="col-sm-6">
-	        <input type="text" class="form-control" id="addr1" name="mem_add1">
+	        <input type="text" class="form-control" id="addr1" name="mem_add1" required>
 	      </div>
 	    </div>
 	    
 	    <div class="form-group">
 	      <label for="add2" class="control-label col-sm-2">상세주소</label>
 	      <div class="col-sm-6">
-	        <input type="text" class="form-control" id="addr2" name="mem_add2">
+	        <input type="text" class="form-control" id="addr2" name="mem_add2" required>
 	      </div>
 	    </div>
 	    
@@ -101,8 +104,8 @@
 	</div>
 	
 	<script>
-	$('#id').on('keyup', function(){
-// 	$('#idChk').on('click', function(){}
+// 	$('#id').on('keyup', function(){}
+	$('#idChk').on('click', function(){
 		var v_id = $('#id').val();
 		var v_disp = $('#disp');
 		
@@ -185,6 +188,73 @@
 	            }
 	        }).open();	
 	});
+	
+	function valid() {
+		
+		// 데이터를 받아와서 ajax로 서버에 전송(insert)
+		
+		// 이전 방식으로 각 필드의 데이터를 변수에 담아서 처리하는 번거로움이 있음
+// 		var v_id = $('#id').val();
+// 		var v_id = $('#pw').val();
+// 		var v_id = $('#nm').val();
+// 		var v_id = $('#hp').val();
+// 		var v_id = $('#em').val();
+// 		var v_id = $('#add').val();
+// 		var data = "id=" + v_id + ...;'
+		
+		// 위를 해결하고자 jQuery에서 제공하는 serialize()를 사용한다.
+		var v_data = $('form').serialize();
+		
+		/*
+		ajax로 데이터를 보낼 때 서버가 이해할 수 있는 방식으로 데이터 형식을 변환해야 함
+		이때 객체를 직렬화하여 데이터를 하나의 덩어리로 전송한다.
+		직렬화(Obj => JSON) : 자바 내부에서 사용하는 객체 또는 데이터를 외부에서 사용 가능한 byte형태로 변환하는 기술(serializing, marshal, stringify)
+		역직렬화 : byte로 변환된 데이터를 원래의 객체 또는 데이터로 변환하는 기술(deserializing, unmarshal, parse)
+		*/
+		console.log("직렬화된 데이터 >> " + v_data);
+		
+		$.ajax({
+			type : 'post',
+			url : '<%=request.getContextPath() %>/site/member.jsp',
+			data : v_data,
+			dataType : 'json',
+			success : function(rst){
+				console.log(rst);
+			},
+			error : function(xhr){
+				alert("상태 : " + xhr.status)
+			}
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
 	</script>
 </body>
 </html>

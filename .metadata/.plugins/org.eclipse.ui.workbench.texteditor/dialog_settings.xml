@@ -22,6 +22,12 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="\&apos;"/>
+			<item value=".M"/>
+			<item value="vo"/>
+			<item value=" m"/>
+			<item value="--&gt;"/>
+			<item value="&lt;!--"/>
 			<item value="joinCod"/>
 			<item value="&quot;/adminlte3"/>
 			<item value="href=&quot;/adminlte3/"/>
@@ -31,14 +37,14 @@
 			<item value="&lt;section class=&quot;content&quot;&gt;"/>
 			<item value="&lt;section class=&quot;content&quot;&gt;\"/>
 			<item value="&lt;footer class=&quot;main-footer&quot;&gt;"/>
-			<item value="&lt;!-- Content Wrapper. Contains page content --&gt;"/>
-			<item value="contetn wrapper"/>
-			<item value="&lt;!-- Main Sidebar Container --&gt;"/>
-			<item value="&lt;!-- Navbar --&gt;"/>
-			<item value="src=&quot;plugins"/>
-			<item value="plugin"/>
 		</list>
 		<list key="replacehistory">
+			<item value=""/>
+			<item value=".getM"/>
+			<item value=" vo"/>
+			<item value="vo.M"/>
+			<item value="--%&gt;"/>
+			<item value="&lt;%--"/>
 			<item value="&quot;../daminlte3"/>
 			<item value="href=&quot;../adminlte3/"/>
 			<item value="src=&quot;../adminlte3/"/>
@@ -48,8 +54,6 @@
 			<item value="src=&quot;adminlte3/dist"/>
 			<item value="href=&quot;adminlte3/dist"/>
 			<item value="href=&quot;adminlte3/plugins"/>
-			<item value="adminlte3/dist"/>
-			<item value="adminlte3/plugins"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
