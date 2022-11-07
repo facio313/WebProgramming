@@ -19,10 +19,10 @@ public class Index extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("======================인덱스 접근======================");
-
+		// board 게시판 정보를 읽어와서 응답해봅시다. 
 		
-		//		RequestDispatcher disp = request.getRequestDispatcher("이동할 jsp주소, 경로를 지정");
+		
+		// RequestDispatcher disp = request.getRequestDispatcher("이동할 jsp주소, 경로를 지정");
 		RequestDispatcher disp = request.getRequestDispatcher("WEB-INF/test/index.jsp");
 		disp.forward(request, response);
 	}

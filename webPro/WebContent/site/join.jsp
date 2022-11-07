@@ -9,6 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.serializeJSON/3.2.1/jquery.serializejson.min.js"></script>
 </head>
 
 <body>
@@ -203,7 +204,10 @@
 // 		var data = "id=" + v_id + ...;'
 		
 		// 위를 해결하고자 jQuery에서 제공하는 serialize()를 사용한다.
-		var v_data = $('form').serialize();
+// 		var v_data = $('form').serialize(); // urlencoded형식(key=value&k=v...)의 형식
+// 		var v_data = $('form').serializeArray(); // obejct array 형식 ([{},{},{},...])
+		var v_data = $('form').serializeJSON(); // json object형식({"key" : "value"}, {}, ...) 
+		
 		
 		/*
 		ajax로 데이터를 보낼 때 서버가 이해할 수 있는 방식으로 데이터 형식을 변환해야 함
@@ -211,49 +215,31 @@
 		직렬화(Obj => JSON) : 자바 내부에서 사용하는 객체 또는 데이터를 외부에서 사용 가능한 byte형태로 변환하는 기술(serializing, marshal, stringify)
 		역직렬화 : byte로 변환된 데이터를 원래의 객체 또는 데이터로 변환하는 기술(deserializing, unmarshal, parse)
 		*/
-		console.log("직렬화된 데이터 >> " + v_data);
+// 		console.log("직렬화된 데이터 >> ", v_data);
 		
 		$.ajax({
 			type : 'post',
-			url : '<%=request.getContextPath() %>/site/member.jsp',
-			data : v_data,
+			url : '<%=request.getContextPath() %>/site/member_json.jsp',
+			// 제이쿼리가 아닌 자바스크립트(XHR 객체 사용)로 AJAX 통신 시, 요청 데이터에 컨텐츠 타입을 꼭 명시해야 하지만,
+			// 제이쿼리는 자동으로 해줌으로써 생략 가능
+// 			contexnt-type : 'application/json', 
+// 			data : v_data, // serialize() 사용 시 넘겨주는 데이터
+			data : JSON.stringify(v_data),
 			dataType : 'json',
 			success : function(rst){
 				console.log(rst);
+				if(rst == 1) {
+// 					$('#joinspan').text("가입성공").css('color', 'orange');
+					alert("가입 성공했습니다.");
+					location.href = "<%=request.getContextPath()%>/site/login.html";
+				} else {
+					$('#joinspan').text("가입실패").css('color', 'orange');
+				}
 			},
 			error : function(xhr){
 				alert("상태 : " + xhr.status)
 			}
 		});
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 	</script>
 </body>

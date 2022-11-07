@@ -17,9 +17,8 @@
 	// 처리를 쉽게 도와주는 library 활용하기
 	MemberVO vo = new MemberVO();
 	BeanUtils.populate(vo, request.getParameterMap());
-	Class.forName("oracle.jdbc.driver.OracleDriver");
-	String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	Connection conn = DriverManager.getConnection(url, "in91", "java");
+	Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "in91", "java");
+ 
 // 	Statement stmt = conn.createStatementg;();
 // 	String sql = " INSERT INTO MEMBER (mem_id, mem_pass, mem_name, mem_bir, mem_zip, mem_add1, mem_add2, mem_hp, mem_mail) "
 // 	+ " VALUES ( " + vo.getMem_id() + ", "

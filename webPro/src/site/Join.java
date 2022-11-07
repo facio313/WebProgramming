@@ -28,6 +28,7 @@ public class Join extends HttpServlet {
 //		request.getRequestDispatcher("이동할 jsp위치 경로 지정");
 		RequestDispatcher disp = request.getRequestDispatcher("site/index.jsp");
 		disp.forward(request, response);
+//		response.sendRedirect("site/index.jsp");
 	}
 	
 	@Override
