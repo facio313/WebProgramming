@@ -9,4 +9,10 @@
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="res.config.BuildedSqlMapClient"/>
 <fullyQualifiedTypeName name="com.ibatis.sqlmap.client.SqlMapClient"/>
+<fullyQualifiedTypeName name="site.service.BoardServiceImpl"/>
+<fullyQualifiedTypeName name="site.Index"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="site.vo.BoardVO"/>
 </qualifiedTypeNameHistroy>

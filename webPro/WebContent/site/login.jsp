@@ -43,19 +43,21 @@
 		// jsp에서는 주석에도 백틱 못 쓴다. 인식이 안 됨
 		
 		var req = new XMLHttpRequest();
-		req.open('post', '/webPro/1027/loadTest.jsp', true);
+		req.open('post', '../1027/loadTest.jsp', true);
 		req.onreadystatechange = function(){
 			if (req.readyState == 4 && req.status == 200) {
 				// console.log(req.responseText);
 				var jsObj = JSON.parse(req.responseText);
+				alert(jsObj.rst);
 				if (jsObj.rst == "ok"){
 					// 성공 시 페이지 이동
 					location.replace("/webPro/Index.do");
-					//location.href = "위치경로지정";
+// 					location.href = "/Index.do";
 				} else {
 					// 실패 시 현재 페이지 머무르기
 					location.reload();
-				}
+					alert("로그인 실패");
+				} 
 			}
 		}
 		req.setRequestHeader('content-type', 'application/x-www-form-urlencoded');

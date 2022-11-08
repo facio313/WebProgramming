@@ -29,7 +29,8 @@ tags: [Singleton, 디자인패턴, 싱글톤]
 3. 객체(인스턴스)는 내부에서 생성하여 이 생성된 객체를 받환하기 위한 메서드를 만든다.(이 메서드의 접근 제어자는 static, 이름은 보통 getInstance()로 지정한다.)
    
     ```
-    private static Interface 변수;
+    // Interface는 Class로 바꿔도 된다
+    private static Interface 변수; 
     private 생성자() {
 
     }

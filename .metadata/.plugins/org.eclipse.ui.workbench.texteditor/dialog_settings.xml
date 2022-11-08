@@ -22,6 +22,7 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="인덱스 접근"/>
 			<item value="\&apos;"/>
 			<item value=".M"/>
 			<item value="vo"/>
@@ -36,7 +37,6 @@
 			<item value="href=&quot;adminlte3/"/>
 			<item value="&lt;section class=&quot;content&quot;&gt;"/>
 			<item value="&lt;section class=&quot;content&quot;&gt;\"/>
-			<item value="&lt;footer class=&quot;main-footer&quot;&gt;"/>
 		</list>
 		<list key="replacehistory">
 			<item value=""/>

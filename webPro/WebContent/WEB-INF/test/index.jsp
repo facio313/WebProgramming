@@ -3,6 +3,7 @@
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -44,7 +45,8 @@
   </style>
 </head>
 <body>
-  
+ 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="./header.jsp" %>
 <%@ include file="/site/aside1.jsp" %>
 <%-- <%@ include file="../../site/aside1.jsp" %> --%>
@@ -55,52 +57,28 @@
       <hr>
 	  <%-- 리스트 영역 --%>
       <div id="lsit">
+      
       <%-- w3schools bootstrap3 collapse source --%>
 		<div class="panel-group" id="accordion">
+		<c:forEach var="list" items="${requestScope.list}" varStatus="stts">
 		  <div class="panel panel-default">
 		    <div class="panel-heading">
 		      <h4 class="panel-title">
-		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-		        Collapsible Group 1</a>
+		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse${stts.count}">
+		       	${list.subject}</a>
 		      </h4>
 		    </div>
-		    <div id="collapse1" class="panel-collapse collapse in">
+		    <div id="collapse${stts.count}" class="panel-collapse collapse">
 		      <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
 		      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
 		      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 		      commodo consequat.</div>
 		    </div>
 		  </div>
-		  <div class="panel panel-default">
-		    <div class="panel-heading">
-		      <h4 class="panel-title">
-		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-		        Collapsible Group 2</a>
-		      </h4>
-		    </div>
-		    <div id="collapse2" class="panel-collapse collapse">
-		      <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-		      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-		      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-		      commodo consequat.</div>
-		    </div>
-		  </div>
-		  <div class="panel panel-default">
-		    <div class="panel-heading">
-		      <h4 class="panel-title">
-		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-		        Collapsible Group 3</a>
-		      </h4>
-		    </div>
-		    <div id="collapse3" class="panel-collapse collapse">
-		      <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-		      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-		      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-		      commodo consequat.</div>
-		    </div>
-		  </div>
+		</c:forEach>
 		</div>      
 		<%-- w3schools bootstrap3 collapse source --%>
+		
       </div>
       <%--페이지 영역 --%>
 		<ul class="pager">
