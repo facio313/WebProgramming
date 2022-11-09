@@ -28,15 +28,18 @@ public class Index extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
+		// 현재 페이지 값(default 1page)
+		int currentPage = 1;
+		
+		currentPage = request.getParameter("pageNo") == null ? 1 : Integer.parseInt(request.getParameter("pageNo"));
+		
 		// board 게시판 정보를 읽어와서 응답해봅시다. 
 		// Service 객체 필요 (Controller <=> Service <=> Dao <=> SqlMapClient(DB)
 		BoardServiceImpl service = BoardServiceImpl.getInstance();
 		
 		//전체 글 개수 가져오기
 		int count = service.countList();
-		
-		// 현재 페이지 값(default 1page)
-		int currentPage = 1;
+
 		
 		// 한 화면에 출력할 페이지 수
 		int perPage = 4;
@@ -63,8 +66,8 @@ public class Index extends HttpServlet {
 		// (startPage 공식 : ((현재 페이지 - 1) / 화면출력페이지 수*화면출력페이지 수) + 1)
 		int startPage = ((currentPage - 1) / perPage * perPage) + 1;
 
-		// (endPAge 공식 : startPage + 화면출력페이지 수 - 1)
-		int endPage = currentPage + perPage - 1;
+		// (endPage 공식 : startPage + 화면출력페이지 수 - 1)
+		int endPage = startPage + perPage - 1;
 		// totalPage보다 endPage의 값이 더 클 경우, 처리
 		if (endPage > totalPage) {
 			endPage = totalPage;

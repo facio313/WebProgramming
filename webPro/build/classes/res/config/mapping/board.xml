@@ -25,5 +25,16 @@
 		WHERE A.RNUM >= #start#
 	]]>
 	</select>
+	
+	<insert id="insertBoard" parameterClass="brd">
+		<!-- 관계형 데이터베이스에서 지원하는 시퀀스를  -->
+		<selectKey keyProperty="num" resultClass="int">
+			SELECT BOARD_NUM_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+	
+		INSERT INTO BOARD (num, subject, writer, mail, password, content, hit, wip, wdate)
+		VALUES (#num#, #subject#, #writer#, #mail#, #password#, #content#, 0, #wip#, SYSDATE)
+	
+	</insert>
 
 </sqlMap>

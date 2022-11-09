@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="org.apache.hc.client5.http.fluent.Request"/>
-<fullyQualifiedTypeName name="java.io.PrintWriter"/>
 <fullyQualifiedTypeName name="org.apache.catalina.util.URLEncoder"/>
 <fullyQualifiedTypeName name="java.net.URLEncoder"/>
 <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
@@ -9,10 +8,12 @@
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="res.config.BuildedSqlMapClient"/>
 <fullyQualifiedTypeName name="com.ibatis.sqlmap.client.SqlMapClient"/>
-<fullyQualifiedTypeName name="site.service.BoardServiceImpl"/>
 <fullyQualifiedTypeName name="site.Index"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.apache.commons.beanutils.BeanUtils"/>
+<fullyQualifiedTypeName name="site.service.BoardServiceImpl"/>
 <fullyQualifiedTypeName name="site.vo.BoardVO"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
 </qualifiedTypeNameHistroy>

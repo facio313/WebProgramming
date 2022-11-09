@@ -41,4 +41,9 @@ public class BoardDaoImpl implements IBoardDao {
 		return smc.queryForList("board.boardList", map);
 	}
 
+	@Override
+	public int insertBoard(BoardVO vo) throws SQLException {
+		return (int)smc.insert("board.insertBoard", vo);
+	}
+
 }
