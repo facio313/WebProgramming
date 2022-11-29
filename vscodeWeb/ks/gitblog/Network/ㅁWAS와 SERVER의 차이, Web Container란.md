@@ -1,4 +1,14 @@
+Web
+- 논리적 공간(논리적 식별자)
+- 한반도
+- (대화를 하기 위해 존재하는 공간)
+
+Internet
+- 물리적 공간
+- 대한민국
+
 Web Server란?
+WS
 - 클라이언트의 request를 받아 정적인 컨텐츠(html, css, js)를 response하는 서버
 - 아파치, Nginx, IIS, webtoB
 
